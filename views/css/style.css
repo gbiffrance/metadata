@@ -1,0 +1,183 @@
+@CHARSET "UTF-8";
+
+@font-face 
+{ 
+	font-family : 'Comfortaa';
+	src: url('../font/Comfortaa-Regular.ttf') format('truetype'); 
+	font-weight: normal;
+}
+
+@font-face 
+{ 
+	font-family : 'Comfortaa';
+	src: url('../font/Comfortaa-Light.ttf') format('truetype'); 
+	font-style: italic;
+}
+
+@font-face 
+{ 
+	font-family : 'Comfortaa';
+	src: url('f../ont/Comfortaa-Bold.ttf') format('truetype'); 
+	font-weight: bold;
+}
+
+
+/*************** balises *********/
+img 
+{
+	border:none
+}
+
+h1, h2
+{
+	font-weight: normal;
+}
+
+/**********************header**********************/
+a
+{
+	color: #04b134;
+	text-decoration:none;
+	font-family: Comfortaa, Verdana, serif;
+}
+
+#header
+{
+	background: url('../images/header-background1.png');
+	font-family: Comfortaa, Verdana, serif;
+	height: 160px;
+	margin-top : 5px;
+}
+
+#header a
+{
+	text-decoration:none;
+	font-family: Comfortaa, Verdana, serif;
+}
+
+#header-holder
+{
+	width: 946px;
+	margin: 0 auto;
+}
+
+#banner
+{
+	margin-top: 20px;
+	display: inline;
+}
+
+#logo
+{
+	float: left;
+	height: 100px;
+	margin-top: 10px;
+}
+
+#slogan
+{
+	float: left;
+	width: 780px;
+	padding-top: 25px;
+}
+
+#slogan p
+{
+	margin: 0;
+	margin-left: 50px;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+#nav
+{
+	float: left;
+	width: 780px;
+	height: 30px;
+	margin-left: 10px;
+}
+
+#nav a
+{
+	font-size: 20px;
+}
+
+#titre
+{
+	background: #c6e844;
+	font-family: Comfortaa, Verdana, serif;
+	height: 40px;
+	line-height: 40px;
+	//font-size: 30px; //NL : title font transfert in h1
+	padding: 0 0 0 10px;
+	width: 946px;
+	margin: 0 auto;
+	margin-bottom : 10px;
+}
+
+/* NL : New tag */
+#titre h1
+{
+	font-family: Comfortaa, Verdana, serif;
+	font-size: 1.2em;
+	margin-left : 10px;
+}
+
+
+/******************* footer *********************/
+#footer
+{
+	font-family: Comfortaa, Verdana, serif;
+	clear: both;
+	margin-top : 20px;
+}
+
+#footer-holder
+{
+	width: 1000px;
+	height: 70px;
+	margin: 0 auto;
+	background-image:url(../images/footer-background.png);
+	background-repeat:no-repeat;
+
+}
+
+#footer-img
+{
+	float: left;
+	padding-left: 50px;
+}
+
+#footer-text
+{
+	font-size: 14px;	
+	float: left;
+	width: 800px;
+	height: 20px;
+	padding-top: 30px;
+}
+
+/*************** body ****************/
+#body
+{ 
+	background: white;
+	font-family: Comfortaa, Verdana, serif;
+	clear: both;
+	width: 946px;
+	margin: 0 auto;
+}
+
+#stat
+{
+	border: 2px groove green; 
+	padding-left: 15px; 
+	padding-right: 15px; 
+	width: 330px; 
+	float:right;
+	margin-left : 15px;
+}
+
+.error
+{
+	color: red;
+}

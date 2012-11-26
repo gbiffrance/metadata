@@ -1,0 +1,16 @@
+
+
+#tabs {
+	height: 550px;
+//	height: auto;
+}
+
+
+.tabs-bottom { position: relative; } 
+//.tabs-bottom .ui-tabs-panel { height: 450px; overflow: auto; } 
+.tabs-bottom .ui-tabs-panel { height: 490px; overflow: auto; } 
+.tabs-bottom .ui-tabs-nav { position: absolute !important; left: 0; bottom: 0; right:0; padding: 0 0.2em 0.2em 0; } 
+.tabs-bottom .ui-tabs-nav li { margin-top: -2px !important; margin-bottom: 1px !important; border-top: none; border-bottom-width: 1px; }
+
+.ui-button-icon-only .ui-button-text { padding: 0.35em; } 
+.ui-autocomplete-input { padding: 0.48em 0 0.47em 0.45em; }

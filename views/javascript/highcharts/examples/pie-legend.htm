@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Highcharts Example</title>
+		
+		
+		<!-- 1. Add these JavaScript inclusions in the head of your page -->
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/highcharts.js"></script>
+		
+		<!-- 1a) Optional: add a theme file -->
+		<!--
+			<script type="text/javascript" src="../js/themes/gray.js"></script>
+		-->
+		
+		<!-- 1b) Optional: the exporting module -->
+		<script type="text/javascript" src="../js/modules/exporting.js"></script>
+		
+		
+		<!-- 2. Add the JavaScript to initialize the chart on document ready -->
+		<script type="text/javascript">
+		
+			var chart,render_chart,d1,d2,d3,d4;
+			$(document).ready(function() {
+			
+			render_chart=function(d)
+			{
+			console.warn(d)
+				chart = new Highcharts.Chart({
+					chart: {
+						renderTo: 'container',
+						plotBackgroundColor: null,
+						plotBorderWidth: null,
+						plotShadow: false
+					},
+					title: {
+						text: d.title
+					},
+					tooltip: {
+						formatter: function() {
+							return '<b>'+ this.point.name +'</b>: '+ this.percentage +' %';
+						}
+					},
+					plotOptions: {
+						pie: {
+							allowPointSelect: true,
+							cursor: 'pointer',
+							dataLabels: {
+								enabled: false
+							},
+							showInLegend: true
+						}
+					},
+				    series: [{
+						type: 'pie',
+						name: 'Browser share',
+						data: d.data
+					}]
+				});
+			} // end function render_chart
+			
+			var data1=[
+				['Parc zoologique',   68],
+				['Autre',       112],							
+				['Aquarium / marinarium',    45],
+				['Organisme de recherche',     13],
+				['Conservatoire',   3],
+				['Jardin botanique',   8],	
+				['Société savante',   2],	
+				['Université/école',   547],
+				['Association',   36],								
+																								
+			]
+			
+			d1={'title':"Collections par type d'institution",data:data1}
+
+
+			var data2=[
+				['Preservee',   65],
+				['Vivant',       72],							
+				['Digitalise',    3]																														
+			]
+		
+			d2={'title':'Collections par classe',data:data2}			
+		
+			
+			var data3=[
+				['',   10],
+				['t',       24],							
+				['f',    1109]																														
+			]
+
+			
+			d3={'title':'Collections par connection au GBIF',data:data3}		
+		var data4=[
+			['Fermee',   2],
+			['Inconnu',       14],							
+			['Active',    94],
+			['Passive',       5]																													
+		]	
+
+		
+			d4={'title':'Collections par status de developement',data:data4}
+			render_chart(d1)
+			
+			$('select').change(function()
+			{
+console.warn(window[$(this).find('option:selected').attr('id')])
+		render_chart(window[$(this).find('option:selected').attr('id')])
+			})
+			});
+				
+		</script>
+		
+	</head>
+	<body>
+
+		<select>
+		<option id='d1'>Collections par type d'institution</option>
+		<option id='d2'>Collections par classe</option>
+		<option id='d3'>Collections par connection au GBIF</option>
+		<option id='d4'>Collections par status de developement</option>
+		</select>
+		<!-- 3. Add the container -->
+		<div id="container" style="width: 800px; height: 400px; margin: 0 auto"></div>
+		
+				
+	</body>
+</html>

@@ -1,0 +1,2 @@
+/*www.miraclesalad.com, v.20070405*/
+function fixSafariLabels(){if($.browser.safari){$('label').click(function(){var a=$('#'+$(this).attr('for'));var b=(a.length==0)?$(this).children('input,select,textarea,button').get(0):a.get(0);if(b){var t=b.type.toLowerCase();if(t=='radio')b.checked=true;else if(t=='checkbox')b.checked=!b.checked;if((t=='radio'||t=='checkbox')&&b.onclick)b.onclick.call(b);b.focus()}})}}$(fixSafariLabels);

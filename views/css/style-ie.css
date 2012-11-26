@@ -1,0 +1,52 @@
+/**********************header**********************/
+#header
+{
+	height: 220px;
+}
+
+#header-holder
+{
+	width: 946px;
+	margin: 0 auto;
+}
+
+#slogan
+{
+	float: right;
+}
+
+#nav
+{
+	float: left;
+	width: 946px;
+}
+
+
+#menu-header.menu
+{
+	width: 700px;
+}
+
+#menu
+{
+	float: left;
+	width: 700px;
+}
+
+/************* resources *******************/
+#publication.participate-processus-tag
+{
+	margin-left: -180px;
+	margin-top: 160px;
+}
+
+.participate-documentation
+{
+	background-color: #df1303;
+	width: 200px;
+	height: 40px;
+	line-height: 20px;
+	float: right;
+	text-align: center;
+	margin-top: 20px;
+}
