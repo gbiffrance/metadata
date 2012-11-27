@@ -10,7 +10,7 @@
 		<tr><td>Email</td><td><input type="text" name="emailAgent" value="<?php echo set_value('emailAgent', $agent->EmailAgent); ?>" /></td></tr>
 		<tr><td>Nouveau mot de passe</td><td><input type="password" name="passAgent" /></td></tr>
 		<tr><td>Retapez votre nouveau mot de passe </td><td><input type="password" name="passAgent2" /></td></tr>
-		<tr><td>Institution</td><td><input type="text" name="nameOrga" value="<?php echo set_value('nameOrga', $agent->NameOrga); ?>" /></td></tr>
+		<tr><td>Institution</td><td><input type="text" name="nameOrga" value="<?php echo set_value('nameOrga', $agent->NameOrga); ?>" title="nom de l'institution &agrave; laquelle vous appartenez" /></td></tr>
 		<tr><td><input type="hidden" name="IdAgent" value="<?php echo $agent->IdAgent; ?>"/></td></tr>
 		<tr><td><input type="submit" value="Valider les modifications"/></td></tr>
 	</form>

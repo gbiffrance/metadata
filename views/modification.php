@@ -11,10 +11,10 @@
 			<form method="post" action="<?php echo site_url('modifinst'); ?>">
 				<tr><th colspan=2>Informations concernant l'institution</th></tr>
 				<tr><td>Nom *</td><td><input type="text" name="nomInst" value="<?php echo set_value('nomInst', $inst->NameInst); ?>" /></td></tr>
-				<tr><td>Description *</td><td><input type="text" name="descInst" value="<?php echo set_value('descInst', $inst->DescriptionInst); ?>" /></td></tr>
+				<tr><td>Description *</td><td><textarea name="descInst"><?php echo set_value('descInst', $inst->DescriptionInst); ?></textarea></td></tr>
 				<tr><td>Sigle </td><td><input type="text" name="sigleInst" value="<?php echo set_value('sigleInst', $inst->SigleInst); ?>" /></td></tr>
 				<tr><td>Adresse (num&eacute;ro + rue) *</td><td><input type="text" name="adresseInst" value="<?php echo set_value('adresseInst', $inst->AddressInst); ?>" /></td></tr>
-				<tr><td>Code postal *</td><td><input type="text" name="codepostalInst" value="<?php echo set_value('codepostalInst', $inst->PostalCode); ?>" /></td></tr>
+				<tr><td>Code postal *</td><td><input type="number" name="codepostalInst" value="<?php echo set_value('codepostalInst', $inst->PostalCode); ?>" /></td></tr>
 				<tr>
 					<td>Ville *</td>
 					<td>
@@ -66,10 +66,10 @@
 						</select>
 					</td>
 				</tr>
-				<tr><td>T&eacute;l&eacute;phone </td><td><input type="text" name="telInst" value="<?php echo set_value('telInst', $inst->PhoneInst); ?>" /></td></tr>
-				<tr><td>Mail </td><td><input type="text" name="mailInst" value="<?php echo set_value('mailInst', $inst->EmailInst); ?>" /></td></tr>
-				<tr><td>URL du logo </td><td><input type="text" name="logoInst" value="<?php echo set_value('logoInst', $inst->LogoUrlInst); ?>" /></td></tr>
-				<tr><td>URL inst </td><td><input type="text" name="urlInst" value="<?php echo set_value('urlInst', $inst->UrlInst); ?>" /></td></tr>
+				<tr><td>T&eacute;l&eacute;phone </td><td><input type="tel" name="telInst" value="<?php echo set_value('telInst', $inst->PhoneInst); ?>" /></td></tr>
+				<tr><td>Mail </td><td><input type="email" name="mailInst" value="<?php echo set_value('mailInst', $inst->EmailInst); ?>" /></td></tr>
+				<tr><td>Adresse URL du logo de l'institution </td><td><input type="url" name="logoInst" value="<?php echo set_value('logoInst', $inst->LogoUrlInst); ?>" /></td></tr>
+				<tr><td>Site web de l'institution </td><td><input type="url" name="urlInst" value="<?php echo set_value('urlInst', $inst->UrlInst); ?>" /></td></tr>
 				<tr>
 					<td>Id inst parente </td>
 					<td>
@@ -171,11 +171,11 @@
 					</td>
 				</tr>
 				<tr><td>Nom *</td><td><input type="text" name="nomData" value="<?php echo set_value('nomData', $data->NameData); ?>" /></td></tr>
-				<tr><td>Identifiant GBIF si connect&eacute; </td><td><input type="text" name="idGbif" value="<?php echo set_value('idGbif', $data->IdGbif); ?>" /></td></tr>
-				<tr><td>Identifiant GBIF France si connect&eacute; </td><td><input type="text" name="idGbifFrance" value="<?php echo set_value('idGbifFrance', $data->IdGbifFrance); ?>" /></td></tr>
-				<tr><td>Description *</td><td><input type="text" name="descData" value="<?php echo set_value('descData', $data->DescriptionData); ?>" /></td></td></tr>
-				<tr><td>Droits </td><td><input type="text" name="rights" value="<?php echo set_value('rights', $data->Rights); ?>" /></td></tr>
-				<tr><td>But </td><td><input type="text" name="purpose" value="<?php echo set_value('purpose', $data->Purpose); ?>" /></td></tr>
+				<tr><td>Identifiant GBIF si connect&eacute; </td><td><input type="text" name="idGbif" title="chiffre &agrave; la fin de l'url gbif. Exemple : http://data.gbif.org/datasets/resource/1850/, il faut indiquer 1850" value="<?php echo set_value('idGbif', $data->IdGbif); ?>" /></td></tr>
+				<tr><td>Identifiant GBIF France si connect&eacute; </td><td><input type="text" name="idGbifFrance" title="explication a venir" value="<?php echo set_value('idGbifFrance', $data->IdGbifFrance); ?>" /></td></tr>
+				<tr><td>Description *</td><td><textarea name="descData"><?php echo set_value('descData', $data->DescriptionData); ?></textarea></td></td></tr>
+				<tr><td>Droits </td><td><input type="text" name="rights" title="s'il existe des limites de consultation/utilisation des donn&eacute;es, indiquez les ici" value="<?php echo set_value('rights', $data->Rights); ?>" /></td></tr>
+				<tr><td>But </td><td><input type="text" name="purpose" title="dans quel but ces donn&eacute;es ont &eacute;t&eacute; collect&eacute;es (recherche, enseignement, inventaires, etc)" value="<?php echo set_value('purpose', $data->Purpose); ?>" /></td></tr>
 				<tr>
 					<td>Poss&egrave;de des types? </td>
 					<td>
@@ -366,7 +366,7 @@
 						</select>
 					</td>
 				</tr>
-				<tr><td>Pr&eacute;cision g&eacute;ographique </td><td><input type="text" name="precisiongeo" value="<?php if($geoD){echo set_value('precisiongeo', $geoD->PrecisionGeo);}else{set_value('precisiongeo');}?>" /></td></tr>
+				<tr><td>Pr&eacute;cision g&eacute;ographique </td><td><input type="text" name="precisiongeo" title="exemple : autour de la m&eacute;diterran&eacute;e" value="<?php if($geoD){echo set_value('precisiongeo', $geoD->PrecisionGeo);}else{set_value('precisiongeo');}?>" /></td></tr>
 				<tr><td>Latitude min </td><td><input type="text" name="latmin" value="<?php if($geoD){echo set_value('latmin', $geoD->LatMin);}else{echo set_value('latmin', 0);} ?>" /></td></tr>
 				<tr><td>Latitude max </td><td><input type="text" name="latmax" value="<?php if($geoD){echo set_value('latmax', $geoD->LatMax);}else{echo set_value('latmax', 0);} ?>" /></td></tr>
 				<tr><td>Longitude min </td><td><input type="text" name="longmin" value="<?php if($geoD){echo set_value('longmin', $geoD->LongMin);}else{echo set_value('longmin', 0);} ?>" /></td></tr>
@@ -590,7 +590,7 @@
 							// On libère la variable
 							unset ($item);
 						?>
-						</select><input type='text' name='newAncient' value="<?php echo set_value('newAncient', 'sècle'); ?>"/></td></tr>
+						</select><input type='text' name='newAncient' placeholder="siècle" value="<?php echo set_value('newAncient'); ?>"/></td></tr>
 					<tr><td><input type='checkbox' name='temporel[]' value='Actuel'
 					<?php
 					if($tempoD)
@@ -634,7 +634,7 @@
 							// On libère la variable
 							unset ($item);
 						?>
-					</select><input type='text' name='newCurrent' value="<?php echo set_value('newCurrent', 'année'); ?>" /></td></tr>
+					</select><input type='text' name='newCurrent' placeholder="année" value="<?php echo set_value('newCurrent'); ?>" /></td></tr>
 				<tr><th colspan=2>M&eacute;thodes</th></tr>
 				<tr><td>M&eacute;thode de collecte </td><td><input type="text" name="collecte" value="<?php if($methD){echo set_value('collecte', $methD->CollecteMeth);}else{set_value('collecte');} ?>" /></td></tr>
 				<tr><td>M&eacute;thode de pr&eacute;servation </td><td><input type="text" name="preservation" value="<?php if($methD){echo set_value('preservation', $methD->PreservationMeth);}else{set_value('preservation');} ?>" /></td></tr>
@@ -649,7 +649,7 @@
 						?>
 						<tr><td>Titre du projet </td><td><input type="text" name="titreP" value="<?php echo set_value('titreP', $proj->TitleProject); ?>" /></td></tr>
 						<tr><td>Domaine du projet </td><td><input type="text" name="domaineP" value="<?php echo set_value('domaineP', $proj->DomainProject); ?>" /></td></tr>
-						<tr><td>Description du projet </td><td><input type="text" name="descP" value="<?php echo set_value('descP', $proj->DescriptionProjet); ?>" /></td></tr>
+						<tr><td>Description du projet </td><td><textarea name="descP"><?php echo set_value('descP', $proj->DescriptionProjet); ?></textarea></td></tr>
 						<tr><td>Fonds du projet </td><td><input type="text" name="fondP" value="<?php echo set_value('fondP', $proj->FundsProject); ?>" /></td></tr>
 						<tr><td><input type="hidden" name="idProject" value="<?php echo $proj->IdProject; ?>"/></td></tr>
 						<?php
@@ -660,7 +660,7 @@
 					?>
 					<tr><td>Titre du projet </td><td><input type="text" name="titreP" value="<?php echo set_value('titreP'); ?>" /></td></tr>
 					<tr><td>Domaine du projet </td><td><input type="text" name="domaineP" value="<?php echo set_value('domaineP'); ?>" /></td></tr>
-					<tr><td>Description du projet </td><td><input type="text" name="descP" value="<?php echo set_value('descP'); ?>" /></td></tr>
+					<tr><td>Description du projet </td><td><textarea name="descP"><?php echo set_value('descP'); ?></textarea></td></tr>
 					<tr><td>Fonds du projet </td><td><input type="text" name="fondP" value="<?php echo set_value('fondP'); ?>" /></td></tr>
 					<?php
 				}
@@ -673,8 +673,8 @@
 					foreach ($BiblioD as $biblio)
 					{
 						?>
-						<tr><td>R&eacute;f&eacute;rence </td><td><input type="text" name="refB" value="<?php echo set_value('refB', $biblio->RefBiblio); ?>" /></td></tr>
-						<tr><td>Type de ressource </td><td><input type="text" name="typeB" value="<?php echo set_value('typeB', $biblio->TypeRessource); ?>" /></td></tr>
+						<tr><td>R&eacute;f&eacute;rence </td><td><input type="text" name="refB" title="DOI, identifiant dans la source originale, lien vers un jeu de donn&eacute;es li&eacute;, etc" value="<?php echo set_value('refB', $biblio->RefBiblio); ?>" /></td></tr>
+						<tr><td>Type de ressource </td><td><input type="text" name="typeB" title="publication, source originale, jeux de donn&eacute;es li&eacute;s, ressources li&eacute;es, etc " value="<?php echo set_value('typeB', $biblio->TypeRessource); ?>" /></td></tr>
 						<tr><td><input type="hidden" name="idBiblio" value="<?php echo $biblio->IdBiblio; ?>"/></td></tr>
 						<?php 
 					}
@@ -682,8 +682,8 @@
 				else
 				{
 					?>
-					<tr><td>R&eacute;f&eacute;rence </td><td><input type="text" name="refB" value="<?php echo set_value('refB'); ?>" /></td></tr>
-					<tr><td>Type de ressource </td><td><input type="text" name="typeB" value="<?php echo set_value('typeB'); ?>" /></td></tr>
+					<tr><td>R&eacute;f&eacute;rence </td><td><input type="text" name="refB" title="DOI, identifiant dans la source originale, lien vers un jeu de donn&eacute;es li&eacute;, etc" value="<?php echo set_value('refB'); ?>" /></td></tr>
+					<tr><td>Type de ressource </td><td><input type="text" name="typeB" title="publication, source originale, jeux de donn&eacute;es li&eacute;s, ressources li&eacute;es, etc " value="<?php echo set_value('typeB'); ?>" /></td></tr>
 					<?php 
 				}
 				?>
@@ -696,7 +696,7 @@
 					{
 						list($nb, $unit) = explode(' ' , $physique->phys);
 						?>
-						<tr><td>Stockage physique </td><td><input type="text" name="nb" value="<?php echo set_value('nb', $nb); ?>"/><input type="text" name="unit" value="<?php echo set_value('unit', $unit); ?>"/></td></tr>
+						<tr><td>Stockage physique </td><td><input type="number" name="nb" title="nombre" value="<?php echo set_value('nb', $nb); ?>"/><input type="text" name="unit" title="exemple : individus, boites, planches d'herbier, etc" value="<?php echo set_value('unit', $unit); ?>"/></td></tr>
 						<tr><td><input type="hidden" name="idPhysicalSize" value="<?php echo $physique->IdPhysicalSize; ?>"/></td></tr>
 						<?php
 					}
@@ -704,7 +704,7 @@
 				else
 				{
 					?>
-					<tr><td>Stockage physique </td><td><input type="text" name="nb" value="<?php echo set_value('nb', 'nombre éléments'); ?>"/><input type="text" name="unit" value="<?php echo set_value('unit', 'unité'); ?>"/></td></tr>
+					<tr><td>Stockage physique </td><td><input type="number" name="nb" title="nombre" value="<?php echo set_value('nb'); ?>"/><input type="text" name="unit" title="exemple : individus, boites, planches d'herbier, etc" value="<?php echo set_value('unit', 'unité'); ?>"/></td></tr>
 					<?php
 				}
 				?>
@@ -753,7 +753,7 @@
 					foreach ($StockD->bdd as $bdd)
 					{
 						?>
-						<tr><td>Base de donn&eacute;es </td><td><input type="text" name="urlbdd" value="<?php echo set_value('urlbdd', $bdd->UrlDatabase); ?>" /></td></tr>
+						<tr><td>Base de donn&eacute;es </td><td><input type="url" name="urlbdd" value="<?php echo set_value('urlbdd', $bdd->UrlDatabase); ?>" /></td></tr>
 						<tr><td>Niveau d'informatisation </td><td><input type="text" name="nivinfo" value="<?php echo set_value('nivinfo', $bdd->NivInformatisation); ?>" /></td></tr>
 						<tr><td><input type="hidden" name="idInfoDatabase" value="<?php echo $bdd->IdInfoDatabase; ?>"/></td></tr>
 						<?php
@@ -762,7 +762,7 @@
 				else
 				{
 					?>
-					<tr><td>Base de donn&eacute;es </td><td><input type="text" name="urlbdd" value="<?php echo set_value('urlbdd', 'url'); ?>" /></td></tr>
+					<tr><td>Base de donn&eacute;es </td><td><input type="url" name="urlbdd" value="<?php echo set_value('urlbdd', 'url'); ?>" /></td></tr>
 					<tr><td>Niveau d'informatisation </td><td><input type="text" name="nivinfo" value="<?php echo set_value('nivinfo'); ?>" /></td></tr>
 					<?php
 				}
@@ -773,12 +773,12 @@
 				{
 					?>
 						<tr><td>Pr&eacute;fixe </td><td><input type="text" name="prefixPers" value="<?php echo set_value('prefixPers', $pers->PrefixPers); ?>" /></td></tr>
-						<tr><td>Nom </td><td><input type="text" name="nomPers" value="<?php echo set_value('nomPers', $pers->FirstNamePers); ?>"/></td></tr>
-						<tr><td>Pr&eacute;nom </td><td><input type="text" name="prenomPers" value="<?php echo set_value('prenomPers', $pers->SurNamePers); ?>"/></td></tr>
-						<tr><td>Ann&eacute;e de naissance </td><td><input type="text" name="naissancePers" value="<?php echo set_value('naissancePers', $pers->BirthYear); ?>"/></td></tr>
-						<tr><td>Ann&eacute;e de d&eacute;c&eacute;s </td><td><input type="text" name="decesPers" value="<?php echo set_value('decesPers', $pers->DeathYear); ?>"/></td></tr>
-						<tr><td>Email </td><td><input type="text" name="mailPers" value="<?php echo set_value('mailPers', $pers->EmailPers); ?>"/></td></tr>
-						<tr><td>Num&eacute;ro de t&eacute;l&eacute;phone </td><td><input type="text" name="telPers" value="<?php echo set_value('telPers', $pers->PhonePers); ?>"/></td></tr>
+						<tr><td>Nom * </td><td><input type="text" name="nomPers" value="<?php echo set_value('nomPers', $pers->FirstNamePers); ?>"/></td></tr>
+						<tr><td>Pr&eacute;nom * </td><td><input type="text" name="prenomPers" value="<?php echo set_value('prenomPers', $pers->SurNamePers); ?>"/></td></tr>
+						<tr><td>Ann&eacute;e de naissance </td><td><input type="number" name="naissancePers" value="<?php echo set_value('naissancePers', $pers->BirthYear); ?>"/></td></tr>
+						<tr><td>Ann&eacute;e de d&eacute;c&eacute;s </td><td><input type="number" name="decesPers" value="<?php echo set_value('decesPers', $pers->DeathYear); ?>"/></td></tr>
+						<tr><td>Email </td><td><input type="email" name="mailPers" value="<?php echo set_value('mailPers', $pers->EmailPers); ?>"/></td></tr>
+						<tr><td>Num&eacute;ro de t&eacute;l&eacute;phone </td><td><input type="tel" name="telPers" value="<?php echo set_value('telPers', $pers->PhonePers); ?>"/></td></tr>
 						<tr><td>Adresse </td><td><input type="text" name="adressePers" value="<?php echo set_value('adressePers', $pers->AddressPers); ?>"/></td></tr>
 						<tr><td><input type="hidden" name="idPers" value="<?php echo $pers->IdPersonne; ?>"/></td></tr>
 						<tr>
