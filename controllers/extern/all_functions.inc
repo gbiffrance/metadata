@@ -102,9 +102,9 @@ function collection_result($coll_id)
 			$output.= "<span class='inst_titular'>Droits d'utilisation : </span>".$data['dataset']->Rights."<br/>\n";
 		
 		if($data['dataset']->CreationDateData) // Date de creation
-			$output.= "<span class='inst_titular'>Date de cr&eacute;ation du jeu de donn&eacute;es : </span>".$data['dataset']->CreationDateData."<br/>\n";
+			$output.= "<span class='inst_titular'>Date de cr&eacute;ation du jeu de donn&eacute;es dans l'annuaire : </span>".$data['dataset']->CreationDateData."<br/>\n";
 		if($data['dataset']->UpdateDateData) // Mise a jour
-			$output.= "<span class='inst_titular'>Date de mise à jour du jeu de donn&eacute;es : </span>".$data['dataset']->UpdateDateData."<br/>\n";
+			$output.= "<span class='inst_titular'>Date de mise à jour du jeu de donn&eacute;es dans l'annuaire : </span>".$data['dataset']->UpdateDateData."<br/>\n";
 		
 		// S'il existe un dataset père
 		if (isset($data['dataParent']))
