@@ -20,6 +20,7 @@ class Modifinst extends CI_Controller {
 		else
 		{
 			$this->load->model('Bdd_insert');
+			$this->load->model('Bdd_select');
 			// Validation formulaire
 			$this->load->library('form_validation');
 			$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
@@ -42,7 +43,6 @@ class Modifinst extends CI_Controller {
 			if ($this->form_validation->run() == FALSE)
 			{
 				// On récupère les champs des listes déroulantes
-				$this->load->model('Bdd_select');
 				// Types institutions
 				$data['typeinst'] = $this->Bdd_select->list_typeInst();
 				// Régions
@@ -77,7 +77,25 @@ class Modifinst extends CI_Controller {
 				// Si nouvelle ville
 				if ($_POST['IdTown'] == 0)
 				{
-					$idtown = $this->Bdd_insert->add_town($_POST['newville']);
+					// On vérifie que le nouveau nom n'est pas déjà dans la base
+					// On récupère tous les noms
+					$tab_temp = $this->Bdd_select->list_ville();
+					$exist = 0;
+					// On teste si le nouveau nom existe déjà dans la base
+					foreach($tab_temp as $item2)
+					{
+						// Si oui, on stocke l'Id
+						if(strcasecmp($item2['NameTown'], $_POST['newville']) == 0)
+						{
+							$idtown = $item2['IdTown'];
+							$exist = 1;
+						}
+					}
+					// Si non, on le rajoute
+					if($exist == 0)
+					{
+						$idtown = $this->Bdd_insert->add_town($_POST['newville']);
+					}
 				}
 				else
 				{

@@ -20,6 +20,7 @@ class Modifdata extends CI_Controller {
 		else
 		{
 			$this->load->model('Bdd_insert');
+			$this->load->model('Bdd_select');
 			// Validation formulaire
 			$this->load->library('form_validation');
 			$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
@@ -84,7 +85,6 @@ class Modifdata extends CI_Controller {
 			if ($this->form_validation->run() == FALSE)
 			{
 				// On récupère les champs des listes déroulantes
-				$this->load->model('Bdd_select');
 				// Type dataset
 				$data['typedata'] = $this->Bdd_select->list_typeData();
 				// Nature dataset
@@ -223,7 +223,25 @@ class Modifdata extends CI_Controller {
 						// Si nouveau
 						if ($value == 0)
 						{
-							$tab_phylum[] = $this->Bdd_insert->add_phylum($_POST['newphylum']);
+							// On vérifie que le nouveau nom n'est pas déjà dans la base
+							// On récupère tous les noms
+							$tab_temp = $this->Bdd_select->list_phylum();
+							$exist = 0;
+							// On teste si le nouveau nom existe déjà dans la base
+							foreach($tab_temp as $item2)
+							{
+								// Si oui, on stocke l'Id
+								if(strcasecmp($item2['PhylumTaxo'], $_POST['newphylum']) == 0)
+								{
+									$tab_phylum[] = $item2['IdPhylum'];
+									$exist = 1;
+								}
+							}
+							// Si non, on le rajoute
+							if($exist == 0)
+							{
+								$tab_phylum[] = $this->Bdd_insert->add_phylum($_POST['newphylum']);
+							}
 						}
 						else
 						{
@@ -238,7 +256,25 @@ class Modifdata extends CI_Controller {
 						// Si nouveau
 						if ($value == 0)
 						{
-							$tab_class[] = $this->Bdd_insert->add_class($_POST['newclasse']);
+							// On vérifie que le nouveau nom n'est pas déjà dans la base
+							// On récupère tous les noms
+							$tab_temp = $this->Bdd_select->list_class();
+							$exist = 0;
+							// On teste si le nouveau nom existe déjà dans la base
+							foreach($tab_temp as $item2)
+							{
+								// Si oui, on stocke l'Id
+								if(strcasecmp($item2['ClassTaxo'], $_POST['newclasse']) == 0)
+								{
+									$tab_class[] = $item2['IdClass'];
+									$exist = 1;
+								}
+							}
+							// Si non, on le rajoute
+							if($exist == 0)
+							{
+								$tab_class[] = $this->Bdd_insert->add_class($_POST['newclasse']);
+							}
 						}
 						else
 						{
@@ -253,7 +289,25 @@ class Modifdata extends CI_Controller {
 						// Si nouveau
 						if ($value == 0)
 						{
-							$tab_order[] = $this->Bdd_insert->add_order($_POST['newordre']);
+							// On vérifie que le nouveau nom n'est pas déjà dans la base
+							// On récupère tous les noms
+							$tab_temp = $this->Bdd_select->list_orderTaxo();
+							$exist = 0;
+							// On teste si le nouveau nom existe déjà dans la base
+							foreach($tab_temp as $item2)
+							{
+								// Si oui, on stocke l'Id
+								if(strcasecmp($item2['OrderTaxo'], $_POST['newordre']) == 0)
+								{
+									$tab_order[] = $item2['IdOrder'];
+									$exist = 1;
+								}
+							}
+							// Si non, on le rajoute
+							if($exist == 0)
+							{
+								$tab_order[] = $this->Bdd_insert->add_order($_POST['newordre']);
+							}
 						}
 						else
 						{
@@ -274,7 +328,25 @@ class Modifdata extends CI_Controller {
 								// Si nouveau
 								if ($value == 0)
 								{
-									$tab_ancient[] = $this->Bdd_insert->add_ancient($_POST['newAncient']);
+									// On vérifie que le nouveau nom n'est pas déjà dans la base
+									// On récupère tous les noms
+									$tab_temp = $this->Bdd_select->list_Ancient();
+									$exist = 0;
+									// On teste si le nouveau nom existe déjà dans la base
+									foreach($tab_temp as $item2)
+									{
+										// Si oui, on stocke l'Id
+										if(strcasecmp($item2['CenturyAncient'], $_POST['newAncient']) == 0)
+										{
+											$tab_ancient[] = $item2['IdAncient'];
+											$exist = 1;
+										}
+									}
+									// Si non, on le rajoute
+									if($exist == 0)
+									{
+										$tab_ancient[] = $this->Bdd_insert->add_ancient($_POST['newAncient']);
+									}
 								}
 								else
 								{
@@ -290,7 +362,25 @@ class Modifdata extends CI_Controller {
 								// Si nouveau
 								if ($value == 0)
 								{
-									$tab_current[] = $this->Bdd_insert->add_current($_POST['newCurrent']);
+									// On vérifie que le nouveau nom n'est pas déjà dans la base
+									// On récupère tous les noms
+									$tab_temp = $this->Bdd_select->list_Current();
+									$exist = 0;
+									// On teste si le nouveau nom existe déjà dans la base
+									foreach($tab_temp as $item2)
+									{
+										// Si oui, on stocke l'Id
+										if(strcasecmp($item2['YearCurrent'], $_POST['newCurrent']) == 0)
+										{
+											$tab_current[] = $item2['IdCurrent'];
+											$exist = 1;
+										}
+									}
+									// Si non, on le rajoute
+									if($exist == 0)
+									{
+										$tab_current[] = $this->Bdd_insert->add_current($_POST['newCurrent']);
+									}
 								}
 								else
 								{
