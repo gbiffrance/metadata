@@ -64,9 +64,11 @@ class Bdd_insert extends CI_Model
 			$this->load->model('Bdd_select');
 			$pass = $this->Bdd_select->hash_mdp($pass);
 			// On construit la requête avec le droit minimum
-			$requete = "INSERT INTO \"Agent\" VALUES (DEFAULT, $name, '$pass', $email, $orga, 1)";
+			$requete = "INSERT INTO \"Agent\" VALUES (DEFAULT, $name, '$pass', $email, $orga, 1) RETURNING \"IdAgent\"";
 			// On contacte la bdd
 			$query = $this->db->query($requete);
+			// On retourne l'id
+			return $this->db->insert_id();
 		}
 		
 		function add_town($name)
