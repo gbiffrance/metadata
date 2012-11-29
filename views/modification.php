@@ -773,7 +773,7 @@
 				{
 					?>
 						<tr><td>Pr&eacute;fixe </td><td><input type="text" name="prefixPers" value="<?php echo set_value('prefixPers', $pers->PrefixPers); ?>" /></td></tr>
-						<tr><td>Nom * </td><td><input type="text" name="nomPers" value="<?php echo set_value('nomPers', $pers->SurNamePersx); ?>"/></td></tr>
+						<tr><td>Nom * </td><td><input type="text" name="nomPers" value="<?php echo set_value('nomPers', $pers->SurNamePers); ?>"/></td></tr>
 						<tr><td>Pr&eacute;nom * </td><td><input type="text" name="prenomPers" value="<?php echo set_value('prenomPers', $pers->FirstNamePers); ?>"/></td></tr>
 						<tr><td>Ann&eacute;e de naissance </td><td><input type="number" name="naissancePers" value="<?php echo set_value('naissancePers', $pers->BirthYear); ?>"/></td></tr>
 						<tr><td>Ann&eacute;e de d&eacute;c&eacute;s </td><td><input type="number" name="decesPers" value="<?php echo set_value('decesPers', $pers->DeathYear); ?>"/></td></tr>
