@@ -27,7 +27,7 @@ if(isset($ajax_f))
 		echo "<script type='text/javascript' src=\"".base_url()."application/views/javascript/pager/jquery.pager.js?ver=3.1\"></script>\n";
  		echo "<script type='text/javascript' src=\"".base_url()."application/views/javascript/pager/my_pager.js?ver=3.1\"></script>\n";
 		
-		echo "<link rel=\"stylesheet\" href=\"".base_url()."application/views/css/possible/Pager.css\" type=\"text/css\" media=\"screen\" />"; // CSS
+		echo "<link rel=\"stylesheet\" href=\"".base_url()."application/views/css/Pager.css\" type=\"text/css\" media=\"screen\" />"; // CSS
 	}
 	else if($ajax_f == "coll_details" || $ajax_f == "pers_details")
 	{
@@ -58,7 +58,7 @@ if(isset($ajax_f))
 				<!--menus-->
 				<div id="nav">
 					<p>
-						<a href="<?php echo site_url('metadata'); ?>">Accueil des m&eacute;tadonn&eacute;es</a>&nbsp; <b>|</b> &nbsp;
+						<a href="<?php echo site_url('metadata'); ?>">Accueil</a>&nbsp; <b>|</b> &nbsp;
 						<a href="<?php echo site_url('consultation'); ?>">Consultation</a>&nbsp; <b>|</b> &nbsp;
 						<!--<a href="http://www.gbif.fr/gbif_old/themes/gbif/metadata/stat/php/displayview.php">Statistiques</a>&nbsp; <b>|</b> &nbsp;-->
 						<?php

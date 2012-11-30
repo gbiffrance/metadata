@@ -419,7 +419,7 @@ class Ajoutdata extends CI_Controller {
 					$this->Bdd_insert->add_biblio($refB, $typeB, $data['id']);
 				}
 				// Création personnes
-				$this->Bdd_insert->add_pers($prenomPers, $nomPers, $prefixPers, $naissancePers, $decesPers, $mailPers, $telPers, $adressePers, $IdRole, $data['id']);
+				$this->Bdd_insert->add_pers($nomPers, $prenomPers, $prefixPers, $naissancePers, $decesPers, $mailPers, $telPers, $adressePers, $IdRole, $data['id']);
 		
 				// On passe l'agent en droit = 2 s'il était à 1
 				if ($this->session->userdata('droits') == 1)

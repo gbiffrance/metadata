@@ -482,11 +482,11 @@ class Modifdata extends CI_Controller {
 				if(isset($_POST['idPers']))
 				{
 					$idPers = $_POST['idPers'];
-					$this->Bdd_insert->update_pers($idPers, $prenomPers, $nomPers, $prefixPers, $naissancePers, $decesPers, $mailPers, $telPers, $adressePers, $IdRole);
+					$this->Bdd_insert->update_pers($idPers, $nomPers, $prenomPers, $prefixPers, $naissancePers, $decesPers, $mailPers, $telPers, $adressePers, $IdRole);
 				}
 				else
 				{
-					$this->Bdd_insert->add_pers($prenomPers, $nomPers, $prefixPers, $naissancePers, $decesPers, $mailPers, $telPers, $adressePers, $IdRole, $idData);
+					$this->Bdd_insert->add_pers($nomPers, $prenomPers, $prefixPers, $naissancePers, $decesPers, $mailPers, $telPers, $adressePers, $IdRole, $idData);
 				}
 		
 				// On stocke le nom et l'id du dataset pour le passer à la vue

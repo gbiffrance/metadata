@@ -28,7 +28,7 @@ class Bdd_insert extends CI_Model
 			add_stockage($iddata, $tab_support, $tab_physical, $tab_database)
 			add_project($title, $domain, $desc, $funds, $iddata)
 			add_biblio($ref, $type, $iddata)
-			add_pers()
+			add_pers(($nomPers, $prenomPers, $prefixPers, $naissancePers, $decesPers, $mailPers, $telPers, $adressePers, $IdRole, $iddata)
 			modif_agentdroit($id, $droit)
 			update_agent($idagent, $nom, $mail, $nameOrga, $pass=NULL)
 			update_institution($id, $name, $desc, $sigle, $adresse, $codepost, $phone, $email, $logo, $url, $idinstparent, $idregion, $idtown, $tab_type)
@@ -40,7 +40,7 @@ class Bdd_insert extends CI_Model
 			update_stockage($idData, $tab_support, $tab_physical, $tab_database)
 			update_project($idP, $titleP, $domainP, $descP, $fundsP)
 			update_biblio($idB, $refB, $typeB)
-			update_pers($idPers, $prenomPers, $nomPers, $prefixPers, $naissancePers, $decesPers, $mailPers, $telPers, $adressePers, $IdRole)
+			update_pers($idPers, $nomPers, $prenomPers, $prefixPers, $naissancePers, $decesPers, $mailPers, $telPers, $adressePers, $IdRole)
 			delete_agentinst($idinst, $idagent)
 			delete_agentdata($iddata, $idagent)
 		*/
@@ -64,9 +64,11 @@ class Bdd_insert extends CI_Model
 			$this->load->model('Bdd_select');
 			$pass = $this->Bdd_select->hash_mdp($pass);
 			// On construit la requête avec le droit minimum
-			$requete = "INSERT INTO \"Agent\" VALUES (DEFAULT, $name, '$pass', $email, $orga, 1)";
+			$requete = "INSERT INTO \"Agent\" VALUES (DEFAULT, $name, '$pass', $email, $orga, 1) RETURNING \"IdAgent\"";
 			// On contacte la bdd
 			$query = $this->db->query($requete);
+			// On retourne l'id
+			return $this->db->insert_id();
 		}
 		
 		function add_town($name)
@@ -453,7 +455,7 @@ class Bdd_insert extends CI_Model
 			$query = $this->db->query($requete);
 		}
 		
-		function add_pers($prenomPers, $nomPers, $prefixPers, $naissancePers, $decesPers, $mailPers, $telPers, $adressePers, $IdRole, $iddata)
+		function add_pers($nomPers, $prenomPers, $prefixPers, $naissancePers, $decesPers, $mailPers, $telPers, $adressePers, $IdRole, $iddata)
 		{
 			// On se connecte à la base de donnée
 			$this->load->database();
@@ -474,7 +476,7 @@ class Bdd_insert extends CI_Model
 				$decesPers = 0;
 			}
 			// On construit la requête qui retourne l'id associé
-			$requete = "INSERT INTO \"Personne\" VALUES (DEFAULT, $prenomPers, $nomPers, $prefixPers, $naissancePers, $decesPers, $mailPers, $telPers, $adressePers, $IdRole) RETURNING \"IdPersonne\"";
+			$requete = "INSERT INTO \"Personne\" VALUES (DEFAULT, $nomPers, $prenomPers, $prefixPers, $naissancePers, $decesPers, $mailPers, $telPers, $adressePers, $IdRole) RETURNING \"IdPersonne\"";
 			// On contacte la bdd
 			$query = $this->db->query($requete);
 			// On récupère l'id
@@ -875,7 +877,7 @@ class Bdd_insert extends CI_Model
 			$query = $this->db->query($requete);
 		}
 		
-		function update_pers($idPers, $prenomPers, $nomPers, $prefixPers, $naissancePers, $decesPers, $mailPers, $telPers, $adressePers, $IdRole)
+		function update_pers($idPers, $nomPers, $prenomPers, $prefixPers, $naissancePers, $decesPers, $mailPers, $telPers, $adressePers, $IdRole)
 		{
 			// On se connecte à la base de donnée
 			$this->load->database();
@@ -897,8 +899,8 @@ class Bdd_insert extends CI_Model
 			}
 			// On construit la requête
 			$requete = "UPDATE \"Personne\"
-										SET \"SurNamePers\" = $prenomPers, 
-										\"FirstNamePers\" = $nomPers, 
+										SET \"SurNamePers\" = $nomPers, 
+										\"FirstNamePers\" = $prenomPers, 
 										\"PrefixPers\" = $prefixPers, 
 										\"BirthYear\" = $naissancePers, 
 										\"DeathYear\" = $decesPers, 

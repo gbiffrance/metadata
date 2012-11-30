@@ -48,13 +48,13 @@ class Enregistrement extends CI_Controller {
 				if (!$this->Bdd_select->get_infoAgent($_POST['email']))
 				{
 					// On rajoute l'agent dans la base de donnée
-					$this->Bdd_insert->add_agent($_POST['nom'], $_POST['password'], $_POST['email'], $_POST['inst']);
+					$idagent = $this->Bdd_insert->add_agent($_POST['nom'], $_POST['password'], $_POST['email'], $_POST['inst']);
 					// On met à jour la session
 					$newdata = array(
-                   'username'  => $Agent->NameAgent,
-                   'id'				 => $Agent->IdAgent,
-                   'email'     => $Agent->EmailAgent,
-                   'droits'		 => $Agent->IdDroit
+                   'username'  => $_POST['nom'],
+                   'id'				 => $idagent,
+                   'email'     => $_POST['password'],
+                   'droits'		 => 1
              		);
 					$this->session->set_userdata($newdata);
 					// On affiche un message
