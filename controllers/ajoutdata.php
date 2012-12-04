@@ -77,10 +77,29 @@ class Ajoutdata extends CI_Controller {
 			$this->form_validation->set_rules('prenomPers','prenom Personne','required|max_length[20]');
 			$this->form_validation->set_rules('naissancePers','naissance Personne','integer|max_length[4]');
 			$this->form_validation->set_rules('decesPers','deces Personne','integer|max_length[4]');
-			$this->form_validation->set_rules('mailPers','mail Personne','valid_email|max_length[50]');
+			$this->form_validation->set_rules('mailPers','mail Personne','requied|valid_email|max_length[50]');
 			$this->form_validation->set_rules('telPers','tel Personne','integer|max_length[20]');
 			$this->form_validation->set_rules('adressePers','adresse Personne','max_length[150]');
 			$this->form_validation->set_rules('IdRole','IdRole','required');
+			// On initialise la variable nb personne pour le premier appel du formulaire
+			$nbPers = 2;
+			if(isset($_POST['nbPers']))
+			{
+				$nbPers = $_POST['nbPers'];
+			}
+			// On crée les règles pour toutes les autres personnes
+			for($i=2;$i<=$nbPers;$i++)
+			{
+				$this->form_validation->set_rules('prefixPers'.$i,'prefix '.$i.'eme Personne','max_length[10]');
+				$this->form_validation->set_rules('nomPers'.$i,'nom '.$i.'eme Personne','max_length[20]');
+				$this->form_validation->set_rules('prenomPers'.$i,'prenom '.$i.'eme Personne','max_length[20]');
+				$this->form_validation->set_rules('naissancePers'.$i,'naissance '.$i.'eme Personne','integer|max_length[4]');
+				$this->form_validation->set_rules('decesPers'.$i,'deces '.$i.'eme Personne','integer|max_length[4]');
+				$this->form_validation->set_rules('mailPers'.$i,'mail '.$i.'eme Personne','valid_email|max_length[50]');
+				$this->form_validation->set_rules('telPers'.$i,'tel '.$i.'eme Personne','integer|max_length[20]');
+				$this->form_validation->set_rules('adressePers'.$i,'adresse '.$i.'eme Personne','max_length[150]');
+				$this->form_validation->set_rules('IdRole'.$i,'IdRole '.$i.'eme','');
+			}
 		
 			if ($this->form_validation->run() == FALSE)
 			{
@@ -151,15 +170,22 @@ class Ajoutdata extends CI_Controller {
 				$longmax = $_POST['longmax'];
 				$precisiontaxo = $_POST['precisiontaxo'];
 				$nomcommun = $_POST['nomcommun'];
-				$prenomPers = $_POST['prenomPers'];
-				$nomPers = $_POST['nomPers'];
-				$prefixPers = $_POST['prefixPers'];
-				$naissancePers = $_POST['naissancePers'];
-				$decesPers = $_POST['decesPers'];
-				$mailPers = $_POST['mailPers'];
-				$telPers = $_POST['telPers'];
-				$adressePers = $_POST['adressePers'];
-				$IdRole = $_POST['IdRole'];
+				// Pour les personnes
+				$nbPers = $_POST['nbPers'];
+				for($i=1;$i<=$nbPers;$i++)
+				{
+					$tab_pers[$i] = array (
+						'prenom' => $_POST['prenomPers'.$i],
+						'nom' => $_POST['nomPers'.$i],
+						'prefix' => $_POST['prefixPers'.$i],
+						'naissance' => $_POST['naissancePers'.$i],
+						'deces' => $_POST['decesPers'.$i],
+						'mail' => $_POST['mailPers'.$i],
+						'tel' => $_POST['telPers'.$i],
+						'adresse' => $_POST['adressePers'.$i],
+						'IdRole' => $_POST['IdRole'.$i]
+					);
+				}
 				// On déclare les tableaux vide
 				$tab_continent = array();
 				$tab_pays = array();
@@ -419,7 +445,10 @@ class Ajoutdata extends CI_Controller {
 					$this->Bdd_insert->add_biblio($refB, $typeB, $data['id']);
 				}
 				// Création personnes
-				$this->Bdd_insert->add_pers($nomPers, $prenomPers, $prefixPers, $naissancePers, $decesPers, $mailPers, $telPers, $adressePers, $IdRole, $data['id']);
+				for($i=1;$i<=$nbPers;$i++)
+				{
+					$this->Bdd_insert->add_pers($tab_pers[$i]['nom'], $tab_pers[$i]['prenom'], $tab_pers[$i]['prefix'], $tab_pers[$i]['naissance'], $tab_pers[$i]['deces'], $tab_pers[$i]['mail'], $tab_pers[$i]['tel'], $tab_pers[$i]['adresse'], $tab_pers[$i]['IdRole'], $data['id']);
+				}
 		
 				// On passe l'agent en droit = 2 s'il était à 1
 				if ($this->session->userdata('droits') == 1)
