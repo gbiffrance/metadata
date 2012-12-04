@@ -352,12 +352,13 @@
 				<tr><td>Base de donn&eacute;es<br/>(url) </td><td><input type="url" name="urlbdd" value="<?php echo set_value('urlbdd'); ?>" /></td></tr>
 				<tr><td>Niveau d'informatisation<br/>(faible, total, 30%, etc) </td><td><input type="text" name="nivinfo"  value="<?php echo set_value('nivinfo'); ?>"/></td></tr>
 				<tr><th colspan=2>Personnes</th></tr>
+				<!-- On mets 1 personne obligatoire, et une 2ème facultative -->
 				<tr><td>Pr&eacute;fixe </td><td><input type="text" name="prefixPers"  value="<?php echo set_value('prefixPers'); ?>"/></td></tr>
 				<tr><td>Nom * </td><td><input type="text" name="nomPers"  value="<?php echo set_value('nomPers'); ?>"/></td></tr>
 				<tr><td>Pr&eacute;nom * </td><td><input type="text" name="prenomPers"  value="<?php echo set_value('prenomPers'); ?>"/></td></tr>
 				<tr><td>Ann&eacute;e de naissance </td><td><input type="number" name="naissancePers"  value="<?php echo set_value('naissancePers'); ?>"/></td></tr>
 				<tr><td>Ann&eacute;e de d&eacute;c&eacute;s </td><td><input type="number" name="decesPers" value="<?php echo set_value('decesPers'); ?>" /></td></tr>
-				<tr><td>Email </td><td><input type="email" name="mailPers" value="<?php echo set_value('mailPers'); ?>" /></td></tr>
+				<tr><td>Email * </td><td><input type="email" name="mailPers" value="<?php echo set_value('mailPers'); ?>" /></td></tr>
 				<tr><td>Num&eacute;ro de t&eacute;l&eacute;phone </td><td><input type="tel" name="telPers" value="<?php echo set_value('telPers'); ?>" /></td></tr>
 				<tr><td>Adresse </td><td><input type="text" name="adressePers" value="<?php echo set_value('adressePers'); ?>" /></td></tr>
 				<tr>
@@ -369,6 +370,32 @@
 							foreach ($role as $item)
 							{
 								echo "<option value='".$item['IdRole']."' ".set_select('IdRole', $item['IdRole']).">".trim($item['NameRole'])."</option>";
+							}
+							// On libère la variable
+							unset ($item);
+						?>
+						</select>
+					</td>
+				</tr>
+				<!-- On stocke ici le nombre de personnes a récupérer (à modifier dynamiquement par javascript)-->
+				<tr><td><input type="hidden" name="nbPers" value="2"/><br/></td></tr>
+				<tr><td>Pr&eacute;fixe </td><td><input type="text" name="prefixPers2"  value="<?php echo set_value('prefixPers2'); ?>"/></td></tr>
+				<tr><td>Nom </td><td><input type="text" name="nomPers2"  value="<?php echo set_value('nomPers2'); ?>"/></td></tr>
+				<tr><td>Pr&eacute;nom </td><td><input type="text" name="prenomPers2"  value="<?php echo set_value('prenomPers2'); ?>"/></td></tr>
+				<tr><td>Ann&eacute;e de naissance </td><td><input type="number" name="naissancePers2"  value="<?php echo set_value('naissancePers2'); ?>"/></td></tr>
+				<tr><td>Ann&eacute;e de d&eacute;c&eacute;s </td><td><input type="number" name="decesPers2" value="<?php echo set_value('decesPers2'); ?>" /></td></tr>
+				<tr><td>Email </td><td><input type="email" name="mailPers2" value="<?php echo set_value('mailPers2'); ?>" /></td></tr>
+				<tr><td>Num&eacute;ro de t&eacute;l&eacute;phone </td><td><input type="tel" name="telPers2" value="<?php echo set_value('telPers2'); ?>" /></td></tr>
+				<tr><td>Adresse </td><td><input type="text" name="adressePers2" value="<?php echo set_value('adressePers2'); ?>" /></td></tr>
+				<tr>
+					<td>R&ocirc;le </td>
+					<td>
+						<select name="IdRole2">
+						<?php
+							// On parcourt la liste des roles
+							foreach ($role as $item)
+							{
+								echo "<option value='".$item['IdRole']."' ".set_select('IdRole2', $item['IdRole']).">".trim($item['NameRole'])."</option>";
 							}
 							// On libère la variable
 							unset ($item);

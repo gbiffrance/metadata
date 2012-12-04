@@ -768,23 +768,26 @@
 				}
 				?>				
 				<tr><th colspan=2>Personnes</th></tr>
+				<!-- On stocke ici le nombre de personnes a récupérer (à modifier dynamiquement par javascript)-->
+				<tr><td><input type="hidden" name="nbPers" value="<?php echo count($personneD)?>"/><br/></td></tr>
 				<?php
+				$i=1;
 				foreach ($personneD as $pers)
 				{
 					?>
-						<tr><td>Pr&eacute;fixe </td><td><input type="text" name="prefixPers" value="<?php echo set_value('prefixPers', $pers->PrefixPers); ?>" /></td></tr>
-						<tr><td>Nom * </td><td><input type="text" name="nomPers" value="<?php echo set_value('nomPers', $pers->SurNamePers); ?>"/></td></tr>
-						<tr><td>Pr&eacute;nom * </td><td><input type="text" name="prenomPers" value="<?php echo set_value('prenomPers', $pers->FirstNamePers); ?>"/></td></tr>
-						<tr><td>Ann&eacute;e de naissance </td><td><input type="number" name="naissancePers" value="<?php echo set_value('naissancePers', $pers->BirthYear); ?>"/></td></tr>
-						<tr><td>Ann&eacute;e de d&eacute;c&eacute;s </td><td><input type="number" name="decesPers" value="<?php echo set_value('decesPers', $pers->DeathYear); ?>"/></td></tr>
-						<tr><td>Email </td><td><input type="email" name="mailPers" value="<?php echo set_value('mailPers', $pers->EmailPers); ?>"/></td></tr>
-						<tr><td>Num&eacute;ro de t&eacute;l&eacute;phone </td><td><input type="tel" name="telPers" value="<?php echo set_value('telPers', $pers->PhonePers); ?>"/></td></tr>
-						<tr><td>Adresse </td><td><input type="text" name="adressePers" value="<?php echo set_value('adressePers', $pers->AddressPers); ?>"/></td></tr>
-						<tr><td><input type="hidden" name="idPers" value="<?php echo $pers->IdPersonne; ?>"/></td></tr>
+						<tr><td>Pr&eacute;fixe </td><td><input type="text" name="prefixPers<?php echo $i; ?>" value="<?php echo set_value('prefixPers'.$i, $pers->PrefixPers); ?>" /></td></tr>
+						<tr><td>Nom * </td><td><input type="text" name="nomPers<?php echo $i; ?>" value="<?php echo set_value('nomPers'.$i, $pers->SurNamePers); ?>"/></td></tr>
+						<tr><td>Pr&eacute;nom * </td><td><input type="text" name="prenomPers<?php echo $i; ?>" value="<?php echo set_value('prenomPers'.$i, $pers->FirstNamePers); ?>"/></td></tr>
+						<tr><td>Ann&eacute;e de naissance </td><td><input type="number" name="naissancePers<?php echo $i; ?>" value="<?php echo set_value('naissancePers'.$i, $pers->BirthYear); ?>"/></td></tr>
+						<tr><td>Ann&eacute;e de d&eacute;c&eacute;s </td><td><input type="number" name="decesPers<?php echo $i; ?>" value="<?php echo set_value('decesPers'.$i, $pers->DeathYear); ?>"/></td></tr>
+						<tr><td>Email </td><td><input type="email" name="mailPers<?php echo $i; ?>" value="<?php echo set_value('mailPers'.$i, $pers->EmailPers); ?>"/></td></tr>
+						<tr><td>Num&eacute;ro de t&eacute;l&eacute;phone </td><td><input type="tel" name="telPers<?php echo $i; ?>" value="<?php echo set_value('telPers'.$i, $pers->PhonePers); ?>"/></td></tr>
+						<tr><td>Adresse </td><td><input type="text" name="adressePers<?php echo $i; ?>" value="<?php echo set_value('adressePers'.$i, $pers->AddressPers); ?>"/></td></tr>
+						<tr><td><input type="hidden" name="idPers<?php echo $i; ?>" value="<?php echo $pers->IdPersonne; ?>"/></td></tr>
 						<tr>
 							<td>R&ocirc;le </td>
 							<td>
-								<select name="IdRole">
+								<select name="IdRole<?php echo $i; ?>">
 									<?php
 									// On parcourt la liste des roles
 									foreach ($role as $item)
@@ -792,11 +795,11 @@
 										echo "<option value='".$item['IdRole']."'";
 										if ($pers->IdRole == $item['IdRole'])
 										{
-											echo " ".set_select('IdRole', $item['IdRole'], TRUE);
+											echo " ".set_select('IdRole'.$i, $item['IdRole'], TRUE);
 										}
 										else
 										{
-											echo " ".set_select('IdRole', $item['IdRole']);
+											echo " ".set_select('IdRole'.$i, $item['IdRole']);
 										}
 										echo ">".trim($item['NameRole'])."</option>";
 									}
@@ -806,7 +809,9 @@
 							</select>
 						</td>
 					</tr>
+					<tr><td><br/></td></tr>
 					<?php
+					$i++;
 				}
 				?>
 				<tr><td><input type="hidden" name="idData" value="<?php echo $data->IdData; ?>"/></td></tr>
