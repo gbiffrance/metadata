@@ -43,16 +43,19 @@ a
 
 #header
 {
-	background: url('../images/header-background1.png');
-	font-family: Comfortaa, Verdana, serif;
-	height: 160px;
-	margin-top : 5px;
+	background-color: #272727;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	height: 55px;
+	margin-top : -10px;
+	margin-left : -10px;
+	margin-right : -10px;
 }
 
 #header a
 {
+	color: #8e9999;
 	text-decoration:none;
-	font-family: Comfortaa, Verdana, serif;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 #header-holder
@@ -70,36 +73,18 @@ a
 #logo
 {
 	float: left;
-	height: 100px;
-	margin-top: 10px;
-}
-
-#slogan
-{
-	float: left;
-	width: 780px;
-	padding-top: 25px;
-}
-
-#slogan p
-{
-	margin: 0;
-	margin-left: 50px;
-	font-weight: bold;
 	font-size: 18px;
+	margin-top: 1px;
 }
 
 #nav
 {
+	color: #8e9999;
 	float: left;
 	width: 780px;
 	height: 30px;
 	margin-left: 10px;
-}
-
-#nav a
-{
-	font-size: 20px;
+	font-size: 12px;
 }
 
 #titre

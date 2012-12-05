@@ -44,21 +44,13 @@ if(isset($ajax_f))
 				<div id="banner">
 					<div id="logo">
 						<h1>
-							<a href="http://www.gbif.fr" accesskey="1" title="GBIF France">
-								<img alt="gbif.fr" src="<?php echo base_url();?>application/views/images/gbif-logo2.gif" />
-							</a>.FR
+							<a href="http://www.gbif.fr" accesskey="1" title="GBIF France">GBIF France</a>
 						</h1>
 					</div>
-					<div id="slogan">
-					<p>
-						Système mondial d'information sur la biodiversité<br/>
-						M&eacute;tadonn&eacute;es fran&ccedil;aises 
-					</p>
-				</div>
 				<!--menus-->
 				<div id="nav">
 					<p>
-						<a href="<?php echo site_url('metadata'); ?>">Accueil</a>&nbsp; <b>|</b> &nbsp;
+						<a href="<?php echo site_url('metadata'); ?>">M&eacute;tadonn&eacute;es</a>&nbsp; <b>|</b> &nbsp;
 						<a href="<?php echo site_url('consultation'); ?>">Consultation</a>&nbsp; <b>|</b> &nbsp;
 						<!--<a href="http://www.gbif.fr/gbif_old/themes/gbif/metadata/stat/php/displayview.php">Statistiques</a>&nbsp; <b>|</b> &nbsp;-->
 						<?php
