@@ -52,7 +52,7 @@ if(isset($ajax_f))
 					<p>
 						<a href="<?php echo site_url('metadata'); ?>">M&eacute;tadonn&eacute;es</a>&nbsp; <b>|</b> &nbsp;
 						<a href="<?php echo site_url('consultation'); ?>">Consultation</a>&nbsp; <b>|</b> &nbsp;
-						<!--<a href="http://www.gbif.fr/gbif_old/themes/gbif/metadata/stat/php/displayview.php">Statistiques</a>&nbsp; <b>|</b> &nbsp;-->
+						<a href="<?php echo site_url('statistiques'); ?>">Statistiques</a>&nbsp; <b>|</b> &nbsp;
 						<?php
 							// Si l'utilisateur est connecté
 							if ($log == "oui")

@@ -17,6 +17,7 @@ class Bdd_select extends CI_Model
 			count_instType()
 			count_instData()
 			count_dataType()
+			count_dataGbif()
 			list_typeInst()
 			list_typeData()
 			list_region()
@@ -168,11 +169,13 @@ class Bdd_select extends CI_Model
 			// On se connecte à la base de donnée
 			$this->load->database();
 			// On construit la requête
-			$requete = "SELECT \"NameRegion\", COUNT(\"IdInst\") as count
-										FROM \"Institution\", \"Region\"
-										WHERE \"Institution\".\"IdRegion\" = \"Region\".\"IdRegion\"
-										GROUP BY \"NameRegion\"
-										ORDER BY \"NameRegion\"";
+			$requete = "SELECT \"NameRegion\", requete.count
+									FROM \"Region\"
+									LEFT JOIN (SELECT \"IdRegion\", COUNT(\"IdInst\") as count
+															FROM \"Institution\"
+															GROUP BY \"IdRegion\") as requete
+									ON requete.\"IdRegion\" = \"Region\".\"IdRegion\"
+									ORDER BY \"NameRegion\"";
 			// On contacte la bdd
 			$query = $this->db->query($requete);
 			// On retourne la réponse
@@ -246,6 +249,22 @@ class Bdd_select extends CI_Model
 			$query = $this->db->query($requete);
 			// On retourne la réponse
 			return $query->result_array();
+		}
+		
+		function count_dataGbif()
+		{
+			// On se connecte à la base de donnée
+			$this->load->database();
+			// On construit la requête
+			$requete = "SELECT COUNT(\"IdData\") as compte
+										FROM \"Dataset\"
+										WHERE \"IdGbif\" != '' ";
+			// On contacte la bdd
+			$query = $this->db->query($requete);
+			// On récupère le résultat
+			$row = $query->row();
+			// On retourne la réponse
+			return $row->compte;
 		}
 		
 		function list_typeInst()
