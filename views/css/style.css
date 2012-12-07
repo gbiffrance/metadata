@@ -166,3 +166,37 @@ a
 {
 	color: red;
 }
+
+/*Page de statistiques*/
+#cartes h2
+{
+	text-align:center;
+}
+#metropole
+{
+	width: 700px;
+}
+#metropole h3
+{
+	text-align:center;
+}
+#outremer
+{
+	float : right;
+}
+#outremer h3, h4
+{
+	margin: 0;
+	padding: 0;
+	text-align:center;
+}
+#camemberts
+{
+	margin-left: auto;
+  margin-right: auto;
+  width: 700px;
+}
+#camemberts h2
+{
+	text-align:center;
+}

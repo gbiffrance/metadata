@@ -6,8 +6,9 @@
 			Nombre de jeux de donn&eacute;es : <?php echo $dataset; ?><br/>
 			Dont <?php echo $coll; ?> concernent des donn&eacute;es de collection<br/>
 			Et <?php echo $obs; ?> concernent des donn&eacute;es d'observation
-		</p>		
+		</p>
 	</div>
+
 	<div id=texte >
 		<h4>Les m&eacute;tadonn&eacute;es</h4>
 		<p>Lorsque l'on rassemble des donn&eacute;es (comme dans une base d'observations), les m&eacute;tadonn&eacute;es sont des donn&eacute;es sur les donn&eacute;es. Dans le cas qui nous int&eacute;resse, les m&eacute;tadonn&eacute;es d&eacute;crivent non pas les caract&eacute;ristiques des sp&eacute;cimens collect&eacute;s ou observ&eacute;s, mais les caract&eacute;ristiques de la collection ou du dispositif d'observation.<br/>
