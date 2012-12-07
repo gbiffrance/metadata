@@ -13,6 +13,10 @@ class Bdd_select extends CI_Model
 			hash_mdp($pass)	
 			count_inst()
 			count_dataset($type)
+			count_instRegion()
+			count_instType()
+			count_instData()
+			count_dataType()
 			list_typeInst()
 			list_typeData()
 			list_region()
@@ -157,6 +161,91 @@ class Bdd_select extends CI_Model
 			$row = $query->row();
 			// On retourne la réponse
 			return $row->compte;
+		}
+		
+		function count_instRegion()
+		{
+			// On se connecte à la base de donnée
+			$this->load->database();
+			// On construit la requête
+			$requete = "SELECT \"NameRegion\", COUNT(\"IdInst\") as count
+										FROM \"Institution\", \"Region\"
+										WHERE \"Institution\".\"IdRegion\" = \"Region\".\"IdRegion\"
+										GROUP BY \"NameRegion\"
+										ORDER BY \"NameRegion\"";
+			// On contacte la bdd
+			$query = $this->db->query($requete);
+			// On retourne la réponse
+			return $query->result_array();
+		}
+		
+		function count_instType()
+		{
+			// On se connecte à la base de donnée
+			$this->load->database();
+			// On construit la requête
+			$requete = "SELECT \"NameTypeInst\", COUNT(\"Type_Inst\".\"IdInst\") as count
+										FROM \"Type_Inst\", \"TypeInstitution\", \"Institution\"
+										WHERE \"Type_Inst\".\"IdInst\" = \"Institution\".\"IdInst\"
+										AND \"Type_Inst\".\"IdTypeInst\" = \"TypeInstitution\".\"IdTypeInst\"
+										GROUP BY \"NameTypeInst\"
+										ORDER BY \"NameTypeInst\"";
+			// On contacte la bdd
+			$query = $this->db->query($requete);
+			// On retourne la réponse
+			return $query->result_array();
+		}
+		
+		function count_instData()
+		{
+			// On se connecte à la base de donnée
+			$this->load->database();
+			// On construit la requête
+			// On récupère  : nombre d'institution possédant nombre dataset
+			$requete = "SELECT COUNT(\"NameInst\") as nbInst, nbData
+										FROM (SELECT \"NameInst\", COUNT(\"Institution\".\"IdInst\") as nbData
+													FROM \"Dataset\", \"Institution\"
+													WHERE \"Dataset\".\"IdInst\" = \"Institution\".\"IdInst\"
+													GROUP BY \"NameInst\"
+													ORDER BY nbData) as DataInst
+										GROUP BY DataInst.nbData";
+			// On contacte la bdd
+			$query = $this->db->query($requete);
+			// On retourne la réponse
+			return $query->result_array();
+		}
+		
+		function count_dataType()
+		{
+			// On se connecte à la base de donnée
+			$this->load->database();
+			// On construit la requête
+			$requete = "SELECT \"NameTypeData\", COUNT(\"IdData\") as count
+										FROM \"Dataset\", \"TypeDataset\"
+										WHERE \"Dataset\".\"IdTypeData\" = \"TypeDataset\".\"IdTypeData\"
+										GROUP BY \"NameTypeData\"
+										ORDER BY \"NameTypeData\"";
+			// On contacte la bdd
+			$query = $this->db->query($requete);
+			// On retourne la réponse
+			return $query->result_array();
+		}
+		
+		function count_dataNature()
+		{
+			// On se connecte à la base de donnée
+			$this->load->database();
+			// On construit la requête
+			$requete = "SELECT \"NameNature\", COUNT(\"Nature_Data\".\"IdData\") as count
+										FROM \"Nature_Data\", \"Dataset\", \"NatureData\"
+										WHERE \"Nature_Data\".\"IdNature\" = \"NatureData\".\"IdNature\"
+										AND \"Nature_Data\".\"IdData\" = \"Dataset\".\"IdData\"
+										GROUP BY \"NameNature\"
+										ORDER BY \"NameNature\"";
+			// On contacte la bdd
+			$query = $this->db->query($requete);
+			// On retourne la réponse
+			return $query->result_array();
 		}
 		
 		function list_typeInst()
@@ -573,7 +662,8 @@ class Bdd_select extends CI_Model
 									LEFT JOIN \"Dataset\" ON \"Dataset\".\"IdData\" = \"Data_Pers\".\"IdData\"
 										WHERE \"Personne\".\"IdRole\" = \"Role\".\"IdRole\"
 										AND (\"SurNamePers\" ILIKE '%$motcle%'
-											OR \"FirstNamePers\" ILIKE '%$motcle%')";
+											OR \"FirstNamePers\" ILIKE '%$motcle%'
+											OR \"NameRole\" ILIKE '%$motcle%')";
 			$query = $this->db->query($requete);
 			// On retourne le résultat
 			return $query->result_array();
