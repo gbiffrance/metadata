@@ -117,21 +117,132 @@
 			options18['height'] = '100px';
 			options18['showLegend'] = false;
 			
+		// Gestion des évènements
+    // The select handler. Call the chart's getSelection() method
+		function selectHandler() 
+		{
+		  if(chart1.getSelection()[0])
+		  {
+		  	var selectedItem1 = chart1.getSelection()[0];
+		  }
+		  else if(chart12.getSelection()[0])
+		  {
+		  	var selectedItem12 = chart12.getSelection()[0];
+		  }
+		  else if(chart13.getSelection()[0])
+		  {
+		  	var selectedItem13 = chart13.getSelection()[0];
+		  }
+		  else if(chart14.getSelection()[0])
+		  {
+		  	var selectedItem14 = chart14.getSelection()[0];
+		  }
+		  else if(chart15.getSelection()[0])
+		  {
+		  	var selectedItem15 = chart15.getSelection()[0];
+		  }
+		  else if(chart16.getSelection()[0])
+		  {
+		  	var selectedItem16 = chart16.getSelection()[0];
+		  }
+		  else if(chart17.getSelection()[0])
+		  {
+		  	var selectedItem17 = chart17.getSelection()[0];
+		  }
+		  else if(chart18.getSelection()[0])
+		  {
+		  	var selectedItem18 = chart18.getSelection()[0];
+		  }
+		  if (selectedItem1) 
+		  {
+		  	document.write("<form method='post' id='stat' name='stat' action='resultat'>");
+		  	document.write("<input type='hidden' name='choix' value='institution' >");
+		  	document.write("<input type='hidden' name='motcle' value='"+data1.getValue(selectedItem1.row, 0)+"' >");
+		  	document.write("</form>");
+		  	document.forms["stat"].submit();
+		  }
+		  else if (selectedItem12) 
+		  {
+		  	document.write("<form method='post' id='stat' name='stat' action='resultat'>");
+		  	document.write("<input type='hidden' name='choix' value='institution' >");
+		  	document.write("<input type='hidden' name='motcle' value='Guadeloupe' >");
+		  	document.write("</form>");
+		  	document.forms["stat"].submit();
+		  }
+		  else if (selectedItem13) 
+		  {
+		  	document.write("<form method='post' id='stat' name='stat' action='resultat'>");
+		  	document.write("<input type='hidden' name='choix' value='institution' >");
+		  	document.write("<input type='hidden' name='motcle' value='Guyane' >");
+		  	document.write("</form>");
+		  	document.forms["stat"].submit();
+		  }
+		  else if (selectedItem14) 
+		  {
+		  	document.write("<form method='post' id='stat' name='stat' action='resultat'>");
+		  	document.write("<input type='hidden' name='choix' value='institution' >");
+		  	document.write("<input type='hidden' name='motcle' value='Réunion' >");
+		  	document.write("</form>");
+		  	document.forms["stat"].submit();
+		  }
+		  else if (selectedItem15) 
+		  {
+		  	document.write("<form method='post' id='stat' name='stat' action='resultat'>");
+		  	document.write("<input type='hidden' name='choix' value='institution' >");
+		  	document.write("<input type='hidden' name='motcle' value='Nouvelle calédonie' >");
+		  	document.write("</form>");
+		  	document.forms["stat"].submit();
+		  }
+		  else if (selectedItem16) 
+		  {
+		  	document.write("<form method='post' id='stat' name='stat' action='resultat'>");
+		  	document.write("<input type='hidden' name='choix' value='institution' >");
+		  	document.write("<input type='hidden' name='motcle' value='Polynésie française' >");
+		  	document.write("</form>");
+		  	document.forms["stat"].submit();
+		  }
+		  else if (selectedItem17) 
+		  {
+		  	document.write("<form method='post' id='stat' name='stat' action='resultat'>");
+		  	document.write("<input type='hidden' name='choix' value='institution' >");
+		  	document.write("<input type='hidden' name='motcle' value='Martinique' >");
+		  	document.write("</form>");
+		  	document.forms["stat"].submit();
+		  }
+		  else if (selectedItem18) 
+		  {
+		  	document.write("<form method='post' id='stat' name='stat' action='resultat'>");
+		  	document.write("<input type='hidden' name='choix' value='institution' >");
+		  	document.write("<input type='hidden' name='motcle' value='Mayotte' >");
+		  	document.write("</form>");
+		  	document.forms["stat"].submit();
+		  }
+		}
+    
+    // Instantiate and draw our chart, passing in some options. + écoute des évènements
 	  var chart1 = new google.visualization.GeoMap(document.getElementById('chart_div1'));
+	  google.visualization.events.addListener(chart1, 'select', selectHandler);
     chart1.draw(data1, options1);
     var chart12 = new google.visualization.GeoMap(document.getElementById('chart_div12'));
+    google.visualization.events.addListener(chart12, 'select', selectHandler);
     chart12.draw(data1, options12);
     var chart13 = new google.visualization.GeoMap(document.getElementById('chart_div13'));
+    google.visualization.events.addListener(chart13, 'select', selectHandler);
     chart13.draw(data1, options13);
     var chart14 = new google.visualization.GeoMap(document.getElementById('chart_div14'));
+    google.visualization.events.addListener(chart14, 'select', selectHandler);
     chart14.draw(data1, options14);
     var chart15 = new google.visualization.GeoMap(document.getElementById('chart_div15'));
+    google.visualization.events.addListener(chart15, 'select', selectHandler);
     chart15.draw(data1, options15);
     var chart16 = new google.visualization.GeoMap(document.getElementById('chart_div16'));
+    google.visualization.events.addListener(chart16, 'select', selectHandler);
     chart16.draw(data1, options16);
     var chart17 = new google.visualization.GeoMap(document.getElementById('chart_div17'));
+    google.visualization.events.addListener(chart17, 'select', selectHandler);
     chart17.draw(data1, options17);
     var chart18 = new google.visualization.GeoMap(document.getElementById('chart_div18'));
+    google.visualization.events.addListener(chart18, 'select', selectHandler);
     chart18.draw(data1, options18);
 	  
 	}
@@ -253,23 +364,69 @@
     var options6 = {'title':"Nombre de dataset connectés au GBIF",
                    'width':800,
                    'height':200};
-                   
-    // Instantiate and draw our chart, passing in some options.
+    
+    // Gestion des évènements
+    // The select handler. Call the chart's getSelection() method
+		function selectHandler() 
+		{
+		  if(chart2.getSelection()[0])
+		  {
+		  	var selectedItem2 = chart2.getSelection()[0];
+		  }
+		  if(chart4.getSelection()[0])
+		  {
+		  	var selectedItem4 = chart4.getSelection()[0];
+		  }
+		  if(chart5.getSelection()[0])
+		  {
+		  	var selectedItem5 = chart5.getSelection()[0];
+		  }
+		  if (selectedItem2) 
+		  {
+		  	document.write("<form method='post' id='stat' name='stat' action='resultat'>");
+		  	document.write("<input type='hidden' name='choix' value='institution' >");
+		  	document.write("<input type='hidden' name='motcle' value='"+data2.getValue(selectedItem2.row, 0)+"' >");
+		  	document.write("</form>");
+		  	document.forms["stat"].submit();
+		  } 
+		  if (selectedItem4) 
+		  {
+		  	document.write("<form method='post' id='stat' name='stat' action='resultat'>");
+		  	document.write("<input type='hidden' name='choix' value='dataset' >");
+		  	document.write("<input type='hidden' name='motcle' value='"+data4.getValue(selectedItem4.row, 0)+"' >");
+		  	document.write("</form>");
+		  	document.forms["stat"].submit();
+		  }
+		  if (selectedItem5) 
+		  {
+		  	document.write("<form method='post' id='stat' name='stat' action='resultat'>");
+		  	document.write("<input type='hidden' name='choix' value='dataset' >");
+		  	document.write("<input type='hidden' name='motcle' value='"+data5.getValue(selectedItem5.row, 0)+"' >");
+		  	document.write("</form>");
+		  	document.forms["stat"].submit();
+		  }
+		}
+    
+    // Instantiate and draw our chart, passing in some options. + écoute des évènements
     // Pour institutions par type
     var chart2 = new google.visualization.PieChart(document.getElementById('chart_div2'));
+    google.visualization.events.addListener(chart2, 'select', selectHandler);
     chart2.draw(data2, options2);
     // Pour dataset par inst
     var chart3 = new google.visualization.PieChart(document.getElementById('chart_div3'));
     chart3.draw(data3, options3);
-     // Pour dataset par type
-     var chart4 = new google.visualization.PieChart(document.getElementById('chart_div4'));
+    // Pour dataset par type
+    var chart4 = new google.visualization.PieChart(document.getElementById('chart_div4'));
+    google.visualization.events.addListener(chart4, 'select', selectHandler);
     chart4.draw(data4, options4);
     // Pour dataset par nature
     var chart5 = new google.visualization.PieChart(document.getElementById('chart_div5'));
+    google.visualization.events.addListener(chart5, 'select', selectHandler);
     chart5.draw(data5, options5);
     // Pour dataset connecté au gbif
     var chart6 = new google.visualization.PieChart(document.getElementById('chart_div6'));
     chart6.draw(data6, options6);
+
   }
 </script>
 
