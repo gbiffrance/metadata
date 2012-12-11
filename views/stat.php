@@ -98,7 +98,7 @@
 			options16['region'] = 'PF';            
 			options16['dataMode'] = 'regions';
 			options16['width'] = '200px';
-			options16['height'] = '100px';
+			options16['height'] = '220px';
 			options16['showLegend'] = false;
 			
 		// Martinique
@@ -441,8 +441,8 @@
 				<tr><td><div id="chart_div12"></div></td><td><div id="chart_div13"></td></tr>
 				<tr><td><h4>Martinique</h4></td><td><h4>Mayotte</h4></td></tr>
 				<tr><td><div id="chart_div17"></div></td><td><div id="chart_div18"></div></td></tr>
-				<tr><td><h4>Nouvelle-Cal&eacute;donie</h4></td><td><h4>Polyn&eacute;sie française</h4></td></tr>
-				<tr><td><div id="chart_div15"></div></td><td><div id="chart_div16"></div></td></tr>
+				<tr><td><h4>Nouvelle-Cal&eacute;donie</h4></td><td ><h4>Polyn&eacute;sie française</h4></td></tr>
+				<tr><td><div id="chart_div15"></div></td><td rowspan="3"><div id="chart_div16"></div></td></tr>
 				<tr><td><h4>R&eacute;union</h4></td><td></td></tr>
 				<tr><td><div id="chart_div14"></div></td><td></td></tr>
 			</table>
