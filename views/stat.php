@@ -57,8 +57,8 @@
     var options1 = {};  
 			options1['region'] = 'FR';            
 			options1['dataMode'] = 'regions';
-			options1['width'] = '700px';
-			options1['height'] = '700px';
+			options1['width'] = '500px';
+			options1['height'] = '500px';
 
 		// Outre mer
 		// Guadeloupe
@@ -435,24 +435,20 @@
 	<div id="cartes">
 		<h2>Nombre d'institutions par régions</h2>
 		<div id="outremer">
-			<h3>Outre mer</h3>
-			<h4>Guadeloupe</h4>
-			<div id="chart_div12"></div>
-			<h4>Guyane</h4>
-			<div id="chart_div13"></div>
-			<h4>Martinique</h4>
-			<div id="chart_div17"></div>
-			<h4>Mayotte</h4>
-			<div id="chart_div18"></div>
-			<h4>Nouvelle-Cal&eacute;donie</h4>
-			<div id="chart_div15"></div>
-			<h4>Polyn&eacute;sie française</h4>
-			<div id="chart_div16"></div>
-			<h4>R&eacute;union</h4>
-			<div id="chart_div14"></div>
+			<table>
+				<tr><h3>Outre-mer</h3></tr>
+				<tr><td><h4>Guadeloupe</h4></td><td><h4>Guyane</h4></td></tr>
+				<tr><td><div id="chart_div12"></div></td><td><div id="chart_div13"></td></tr>
+				<tr><td><h4>Martinique</h4></td><td><h4>Mayotte</h4></td></tr>
+				<tr><td><div id="chart_div17"></div></td><td><div id="chart_div18"></div></td></tr>
+				<tr><td><h4>Nouvelle-Cal&eacute;donie</h4></td><td><h4>Polyn&eacute;sie française</h4></td></tr>
+				<tr><td><div id="chart_div15"></div></td><td><div id="chart_div16"></div></td></tr>
+				<tr><td><h4>R&eacute;union</h4></td><td></td></tr>
+				<tr><td><div id="chart_div14"></div></td><td></td></tr>
+			</table>
 		</div>
 		<div id="metropole">
-			<h3>Metropole</h3>
+			<h3>M&eacute;tropole</h3>
 			<div id="chart_div1"></div>
 		</div>
 	</div>
