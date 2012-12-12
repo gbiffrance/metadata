@@ -1,5 +1,7 @@
 <div id=body >
-	<p>Vous pouvez effectuer une recherche multiple sur diff&eacute;rents crit&egrave;res. Celle-ci s'effectuera sur tous les champs que vous aurez remplis.</p>
+	<p>Vous pouvez effectuer une recherche multiple sur diff&eacute;rents crit&egrave;res. Celle-ci s'effectuera sur tous les champs que vous aurez remplis.<br/>
+	Pour faire une selection multiple, appuyez sur la touche ctrl tout en cliquant sur vos diff&eacute;rents choix.<br/>
+	Pour d&eacute;selectionner un champ, appuyez sur la touche ctrl tout en cliquant dessus.</p>
 	<table>
 		<form method="post" action="resultat">
 			<tr>
