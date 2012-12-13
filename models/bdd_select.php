@@ -702,14 +702,7 @@ class Bdd_select extends CI_Model
 									LEFT JOIN \"Geographie\" ON \"Dataset\".\"IdData\" = \"Geographie\".\"IdData\" 
 									LEFT JOIN \"Continent_Geo\" ON \"Geographie\".\"IdGeo\" = \"Continent_Geo\".\"IdGeo\" 
 									LEFT JOIN \"Country_Geo\" ON \"Geographie\".\"IdGeo\" = \"Country_Geo\".\"IdGeo\"
-									LEFT JOIN \"Taxonomy\" ON \"Dataset\".\"IdData\" = \"Taxonomy\".\"IdData\"
-									LEFT JOIN \"Kingdom_Taxo\" ON \"Taxonomy\".\"IdTaxo\" = \"Kingdom_Taxo\".\"IdTaxo\"
-									LEFT JOIN \"Phylum_Taxo\" ON \"Taxonomy\".\"IdTaxo\" = \"Phylum_Taxo\".\"IdTaxo\"
-									LEFT JOIN \"Class_Taxo\" ON \"Taxonomy\".\"IdTaxo\" = \"Class_Taxo\".\"IdTaxo\"
-									LEFT JOIN \"Order_Taxo\" ON \"Taxonomy\".\"IdTaxo\" = \"Order_Taxo\".\"IdTaxo\"
-									LEFT JOIN \"Family_Taxo\" ON \"Taxonomy\".\"IdTaxo\" = \"Family_Taxo\".\"IdTaxo\"
-									LEFT JOIN \"Genus_Taxo\" ON \"Taxonomy\".\"IdTaxo\" = \"Genus_Taxo\".\"IdTaxo\"
-									LEFT JOIN \"Specie_Taxo\" ON \"Taxonomy\".\"IdTaxo\" = \"Specie_Taxo\".\"IdTaxo\"), 
+									LEFT JOIN \"Taxonomy\" ON \"Dataset\".\"IdData\" = \"Taxonomy\".\"IdData\"), 
 									(\"Institution\" 
 									LEFT JOIN \"Type_Inst\" ON \"Institution\".\"IdInst\" = \"Type_Inst\".\"IdInst\") 
 										WHERE \"Dataset\".\"IdInst\" = \"Institution\".\"IdInst\" 
@@ -719,6 +712,7 @@ class Bdd_select extends CI_Model
 			// Pour chaque champs du formulaire
 			/* $motcle[IdTypeInst], $motcle[IdRegion], $motcle[IdTown]
 			$motcle[IdTypeData], $motcle[IdNature], $motcle[IdContinent], $motcle[IdCountry]
+			// On gère la taxo différemment pour corriger un soucis de serveur qui tourne dans le vide si la requête concerne trop de dataset
 			$motcle[IdKingdom], $motcle[IdPhylum], $motcle[IdClass], $motcle[IdOrder], $motcle[IdFamily], $motcle[IdGenus], $motcle[IdSpecie] */
 			foreach ($motcle as $key => $value)
 			{
@@ -730,17 +724,121 @@ class Bdd_select extends CI_Model
 					foreach ($motcle[$key] as $item)
 					{
 						// On ajoute les conditions à la requète.
-						// Si c'est la première condition sur cette clé = AND
-						if ($premier == 1)
+						// Cas particulier de la taxonomie
+						if ($key == 'IdKingdom')
 						{
-							$requete .= " AND (\"".$key."\" = '$item' ";
-							$premier = 0;
+							// Si c'est la première condition sur cette clé
+							if ($premier == 1)
+							{
+								$requete .= "AND \"IdTaxo\" IN (SELECT \"IdTaxo\" FROM \"Kingdom_Taxo\" WHERE \"".$key."\" = '$item' ";
+								$premier = 0;
+							}
+							// Si non
+							else
+							{
+								$requete .= "OR \"".$key."\" = '$item' ";
+							}
 						}
-						// Sinon = OR
+						elseif ($key == 'IdPhylum')
+						{
+							// Si c'est la première condition sur cette clé
+							if ($premier == 1)
+							{
+								$requete .= "AND \"IdTaxo\" IN (SELECT \"IdTaxo\" FROM \"Phylum_Taxo\" WHERE \"".$key."\" = '$item' ";
+								$premier = 0;
+							}
+							// Si non
+							else
+							{
+								$requete .= "OR \"".$key."\" = '$item' ";
+							}
+						}
+						elseif ($key == 'IdClass')
+						{
+							// Si c'est la première condition sur cette clé
+							if ($premier == 1)
+							{
+								$requete .= "AND \"IdTaxo\" IN (SELECT \"IdTaxo\" FROM \"Class_Taxo\" WHERE \"".$key."\" = '$item' ";
+								$premier = 0;
+							}
+							// Si non
+							else
+							{
+								$requete .= "OR \"".$key."\" = '$item' ";
+							}
+						}
+						elseif ($key == 'IdOrder')
+						{
+							// Si c'est la première condition sur cette clé
+							if ($premier == 1)
+							{
+								$requete .= "AND \"IdTaxo\" IN (SELECT \"IdTaxo\" FROM \"Order_Taxo\" WHERE \"".$key."\" = '$item' ";
+								$premier = 0;
+							}
+							// Si non
+							else
+							{
+								$requete .= "OR \"".$key."\" = '$item' ";
+							}
+						}
+						elseif ($key == 'IdFamily')
+						{
+							// Si c'est la première condition sur cette clé
+							if ($premier == 1)
+							{
+								$requete .= "AND \"IdTaxo\" IN (SELECT \"IdTaxo\" FROM \"Family_Taxo\" WHERE \"".$key."\" = '$item' ";
+								$premier = 0;
+							}
+							// Si non
+							else
+							{
+								$requete .= "OR \"".$key."\" = '$item' ";
+							}
+						}
+						elseif ($key == 'IdGenus')
+						{
+							// Si c'est la première condition sur cette clé
+							if ($premier == 1)
+							{
+								$requete .= "AND \"IdTaxo\" IN (SELECT \"IdTaxo\" FROM \"Genus_Taxo\" WHERE \"".$key."\" = '$item' ";
+								$premier = 0;
+							}
+							// Si non
+							else
+							{
+								$requete .= "OR \"".$key."\" = '$item' ";
+							}
+						}
+						elseif ($key == 'IdSpecie')
+						{
+							// Si c'est la première condition sur cette clé
+							if ($premier == 1)
+							{
+								$requete .= "AND \"IdTaxo\" IN (SELECT \"IdTaxo\" FROM \"specie_Taxo\" WHERE \"".$key."\" = '$item' ";
+								$premier = 0;
+							}
+							// Si non
+							else
+							{
+								$requete .= "OR \"".$key."\" = '$item' ";
+							}
+						}
+						// Reste des mots clés
 						else
 						{
-							$requete .= " OR \"".$key."\" = '$item' ";
+							// Si c'est la première condition sur cette clé = AND
+							if ($premier == 1)
+							{
+								$requete .= " AND (\"".$key."\" = '$item' ";
+								$premier = 0;
+							}
+							// Sinon = OR
+							else
+							{
+								$requete .= " OR \"".$key."\" = '$item' ";
+							}
 						}
+						
 					}
 					$requete .= ")";
 				}
