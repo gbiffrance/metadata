@@ -631,6 +631,11 @@
  	padding-bottom: 5px;
  	
  }
+ span.logo_img img
+ {
+	max-width: 300px;
+	max-height: 300px;
+ }
  span.none
  {
  	font-style: italic;

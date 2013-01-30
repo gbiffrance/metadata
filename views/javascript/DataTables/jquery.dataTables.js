@@ -218,7 +218,7 @@ $j=jQuery.noConflict();
 		"sPageButtonActive": "fg-button ui-button ui-state-default ui-state-disabled",
 		"sPageButtonStaticDisabled": "fg-button ui-button ui-state-default ui-state-disabled",
 		"sPageFirst": "first ui-corner-tl ui-corner-bl",
-		"sPagePrevious": "Précédent",
+		"sPagePrevious": "previous",
 		"sPageNext": "next",
 		"sPageLast": "last ui-corner-tr ui-corner-br",
 		
@@ -322,7 +322,7 @@ $j=jQuery.noConflict();
 				nPaging.appendChild( nNext );
 				
 				$(nPrevious).bind( 'click.DT', function() {
-					if ( oSettings.oApi._fnPageChange( oSettings, "Précédent" ) )
+					if ( oSettings.oApi._fnPageChange( oSettings, "previous" ) )
 					{
 						/* Only draw when the page has actually changed */
 						fnCallbackDraw( oSettings );
@@ -436,7 +436,7 @@ $j=jQuery.noConflict();
 				} );
 				
 				$(nPrevious).bind( 'click.DT', function() {
-					if ( oSettings.oApi._fnPageChange( oSettings, "Précédent" ) )
+					if ( oSettings.oApi._fnPageChange( oSettings, "previous" ) )
 					{
 						fnCallbackDraw( oSettings );
 					}

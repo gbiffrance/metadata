@@ -320,7 +320,7 @@ function collection_details($coll_id)
 	// Biblio
 	if (isset($data['biblio']))
 	{
-		$output.= "<br/><span class='inst_titular'>Bibliographie</span> :\n";
+		$output.= "<br/><span class='inst_titular'>Ressources</span> :\n";
 		$output.= "<ul>\n";
 		// Il peut y en avoir plusieurs
 		for($i=0;$i<sizeof($data['biblio']);$i++)
@@ -566,7 +566,7 @@ function institution_result ($inst_id, $isNameLink=false) {
 	// AFFICHAGE DES RESULTATS ----
 	$info="";
 	if ($data['inst']->LogoUrlInst != '') {
-		$info.="<img src='".trim($data['inst']->LogoUrlInst)."' /><br/>\n";
+		$info.="<span class=\"logo_img\"><img src='".trim($data['inst']->LogoUrlInst)."' /></span><br/>\n";
 	}
 	if($isNameLink)
 	{
