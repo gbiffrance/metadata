@@ -31,9 +31,9 @@ switch (info)
 		break;
 	
 	case 'collections':
-		jQuery("#consult thead").html("<tr><th width='0%' class='invisible'></th><th width='0%' class='invisible'></th><th width='30%' title='Résultats triés'>Institution</th><th width='30%' title='Résultats triés'>Collection</th><th width='30%' title='Résultats triés'>Ville</th></tr>");
+		jQuery("#consult thead").html("<tr><th width='0%' class='invisible'></th><th width='0%' class='invisible'></th><th width='30%' title='Résultats triés'>Institution</th><th width='30%' title='Résultats triés'>Collection</th><th width='10%' title='Résultats triés'>Collections/Observations</th><th width='30%' title='Résultats triés'>Nature du jeu de donn&eacute;es</th></tr>");
 		jQuery("#consult tfoot").empty();
-		jQuery("#consult tfoot").html("<tr><th width='0%' class='invisible'></th><th width='0%' class='invisible'></th><th width='30%'>Institution</th><th width='30%'>Collection</th><th width='30%'>Ville</th></tr>");
+		jQuery("#consult tfoot").html("<tr><th width='0%' class='invisible'></th><th width='0%' class='invisible'></th><th width='30%'>Institution</th><th width='30%'>Collection</th><th width='10%' title='Résultats triés'>Collections/Observations</th><th width='30%' title='Résultats triés'>Nature du jeu de donn&eacute;es</th></tr>");
 		break;
 		
 	case 'colls_by_region':

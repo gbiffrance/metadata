@@ -20,15 +20,6 @@ global $output2;
 
 switch ($_GET['info']) {
 	case 'institutions':
-		/////////////////////////////// PERE DELETE ///////////////////////////////////
-// 		$aColumns = array( 'institutionid','institutionname','institutiontype','town');
-// 		/* Indexed column (used for fast and accurate table cardinality) */
-// 		$sIndexColumn = "institutionid";
-// 		/* DB table to use */
-// 		$sTable = "institutiongroup";
-// 		$joins='NATURAL JOIN metadatacollection NATURAL JOIN town NATURAL JOIN institutiontype NATURAL JOIN descriptivegroup';
-		/////////////////////////////// END PERE DELETE ///////////////////////////////////
-		
 		$type='institutions';
 		$data_ids = array('0'); // column to hide
 		$searchWord = '';
@@ -54,13 +45,6 @@ switch ($_GET['info']) {
 			$aaDataPere[$i] = array($aaData[$i]['IdInst'],$aaData[$i]['NameInst'],$aaData[$i]['NameTypeInst'],$aaData[$i]['NameTown']);
 		}
 		
-		//$aaDataPere[0][1] = 'YOPPP : '.$_GET['info']; // TODO : REMOVE !
-// 		$gget = 'get=';
-// 		foreach( $_GET as $key => $value){
-// 			$gget .= "; $key : $value ";
-// 		}
-// 		$aaDataPere[0][1] = $gget; // TODO : REMOVE !
-		
 		if ( isset( $_GET['iDisplayStart'] ) && $_GET['iDisplayLength'] != '-1' )
 		{
 			$aaDataPere = array_slice($aaDataPere,$_GET['iDisplayStart'],$_GET['iDisplayLength']);
@@ -77,23 +61,6 @@ switch ($_GET['info']) {
 	break;
 	
 	case 'collections':
-		/////////////////////////////// PERE DELETE ///////////////////////////////////
-		//COLUMNS, ALLWAYS FIRST IDs (invisible on tables), the institution, collection and town 
-		//pay attention to the order of $aColumns! (IDs and its related field!)
-// 		$aColumns = array( 'institutionid','metadatacollectionid','institutionname','collectionname','town');
-// 		
-// 		/* Indexed column (used for fast and accurate table cardinality) */
-// 		$sIndexColumn = "metadatacollectionid";
-// 		
-// 		/* DB table to use */
-// 		$sTable = "metadatacollection";
-// 			
-// 		$joins = "NATURAL JOIN descriptivegroup NATURAL JOIN institutiongroup NATURAL JOIN town";
-// 		$individual_where='NOT metadatacollection.metadatacollectionid=0';
-// 		$data_ids=array('0','1');
-// 		$type='collections';
-		/////////////////////////////// END PERE DELETE ///////////////////////////////////
-		
 		$type='collections';
 		$data_ids = array('0','1'); // columns to hide
 		$searchWord = '';
@@ -115,14 +82,14 @@ switch ($_GET['info']) {
 		$iFilteredTotal = $iTotal;
 		
 		$aaDataPere = array();
-// 		$instDetails = array(); // info about all institutions owning datasets
 		for($i=0;$i<sizeof($aaData);$i++)
 		{
 			$inst = $ci->Bdd_select->get_infoInst($aaData[$i]['IdInst']);
 			$town = $ci->Bdd_select->get_townInst($inst->IdTown);
-			$aaDataPere[$i] = array($aaData[$i]['IdInst'],$aaData[$i]['IdData'],$aaData[$i]['NameInst'],$aaData[$i]['NameData'],$town);
+			$aaDataPere[$i] = array($aaData[$i]['IdInst'],$aaData[$i]['IdData'],
+									$aaData[$i]['NameInst'],$aaData[$i]['NameData'],
+									$aaData[$i]['NameTypeData'],$aaData[$i]['NameNature']);
 		}
-// $dataset[$i]['NameTypeData'] ? $dataset[$i]['NameNature'] ?
 		
 		if ( isset( $_GET['iDisplayStart'] ) && $_GET['iDisplayLength'] != '-1' )
 		{
@@ -140,7 +107,6 @@ switch ($_GET['info']) {
 		break;
 	
 	case 'colls_by_region': 
-	
 		/////////////////////////////// PERE DELETE ///////////////////////////////////
 // 		$aColumns = array('institutionid','metadatacollectionid','institutionname','collectionname','town');
 // 		$sIndexColumn = "metadatacollectionid";
@@ -155,18 +121,6 @@ switch ($_GET['info']) {
 		break;
 	
 	case 'personnes':
-		/////////////////////////////// PERE DELETE ///////////////////////////////////
-// 		$aColumns = array( 'personid','institutiongroup.institutionid','metadatacollectionid','familyname','givennames','institutionname','collectionname','role');
-// 		$sIndexColumn = "personid";
-// 		$sTable = "metadatacollection";		
-// 		$joins = "NATURAL JOIN descriptivegroup NATURAL JOIN persongroup 
-// 		NATURAL JOIN person JOIN institutiongroup ON institutiongroup.institutionid = metadatacollection.institutionid  
-// 		NATURAL JOIN role";
-// 		$individual_where=" collectionname !='' AND familyname !='' AND familyname not ilike '%inconnu%'";
-// 		$data_ids=array('0','1','2');
-// 		$type='personnes';
-		/////////////////////////////// END PERE DELETE ///////////////////////////////////
-		
 		$data_ids=array('0','1','2'); // columns to hide
 		$type='personnes';
 		$searchWord = '';
@@ -231,25 +185,6 @@ switch ($_GET['info']) {
 // 		/////////////////////////////// END PERE DELETE ///////////////////////////////////
 // 		break;
 } // switch info
-
-
-
-/////////////////////////////// PERE DELETE ///////////////////////////////////
-/* Database connection information */
-// $gaSql['user']       = "gbif_web";
-// $gaSql['password']   = "d0nt4gt!";
-// $gaSql['db']         = "ncd";
-// $gaSql['server']     = "lully.snv.jussieu.fr"; // NL : TEST : works !
-// //$gaSql['server']     = "localhost";
-// 
-// // DB connection
-// $gaSql['link'] = pg_connect(
-// 	" host=".$gaSql['server'].
-// 	" dbname=".$gaSql['db'].
-// 	" user=".$gaSql['user'].
-// 	" password=".$gaSql['password']
-// ) or die('Could not connect: ' . pg_last_error());
-/////////////////////////////// END PERE DELETE ///////////////////////////////////
 
 
 // ************* Paging : nb results to show *************
@@ -358,13 +293,4 @@ if ( isset( $_GET['iDisplayStart'] ) && $_GET['iDisplayLength'] != '-1' )
 
 
 echo $_GET['callback'].'('.json_encode( $output2 ).');';
-
-
-/////////////////////////////// PERE DELETE ///////////////////////////////////
-// Free resultset
-// pg_free_result( $rResult );
-// 
-// // Closing connection
-// pg_close( $gaSql['link'] );
-/////////////////////////////// END PERE DELETE ///////////////////////////////////
 ?>
