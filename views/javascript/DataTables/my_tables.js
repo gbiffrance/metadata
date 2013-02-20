@@ -129,7 +129,7 @@ defs=
 									{
 										if (info=='regions')
 											
-											new_html="<a href='index.php?page_id=765&d=colls_by_region&id="+data+"'>"+jQuery(new_target).html()+"</a>";	
+											new_html="<a href='detailresultat/dataset/"+data+"'>"+jQuery(new_target).html()+"</a>";	
 										else 
 											new_html="<a href='detailresultat/inst/"+data+"'>"+jQuery(new_target).html()+"</a>";	
 										
@@ -170,7 +170,7 @@ defs=
 										if(info=='personnes')
 											new_html="<a href='detailresultat/dataset/"+data+"'>"+jQuery(td_target).eq(5).html()+"</a>";
 										else
-											new_html="<a href='index.php?page_id=333&data="+data+"'>"+jQuery(new_target).html()+"</a>";
+											new_html="<a href='detailresultat/inst/"+data+"'>"+jQuery(new_target).html()+"</a>";
 									}
 								break;
 							}
