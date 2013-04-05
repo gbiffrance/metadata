@@ -178,7 +178,7 @@
 						</select>
 					</td>
 				</tr>
-				<tr><th colspan=2>G&eacute;ographie</th></tr>
+				<tr><th colspan=2>Couverture g&eacute;ographique</th></tr>
 				<tr>
 					<td>Continent </td>
 					<td>
