@@ -24,7 +24,7 @@
 					</table>
 				</form>
 				<br /><br />
-				<span class="tips">Vous n'avez pas de compte GBIF France. Pour en cr&eacute;er un cliquez 
+				<span class="tips">Si vous n'avez pas de compte GBIF France, vous pouvez en cr&eacute;er un en cliquant &nbsp;
 				<a href="<?php echo site_url('enregistrement'); ?>">ICI</a>.</span>
 			<?php
 		}
