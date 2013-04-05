@@ -23,6 +23,9 @@
 						<tr><td></td><td><input type="submit" value="Valider"/></td></tr>
 					</table>
 				</form>
+				<br /><br />
+				<span class="tips">Vous n'avez pas de compte GBIF France. Pour en cr&eacute;er un cliquez 
+				<a href="<?php echo site_url('enregistrement'); ?>">ICI</a>.</span>
 			<?php
 		}
 	?>

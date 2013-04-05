@@ -82,8 +82,7 @@ if(isset($ajax_f))
 							else
 							{
 								?>
-									<a href="<?php echo site_url('connexion'); ?>">Se connecter</a>&nbsp; <b>|</b> &nbsp;
-									<a href="<?php echo site_url('enregistrement'); ?>">S'enregistrer</a>
+									<a href="<?php echo site_url('connexion'); ?>">Se connecter</a>&nbsp;
 								<?php
 							}
 						?> 
