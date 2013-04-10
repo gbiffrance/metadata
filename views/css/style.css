@@ -1,6 +1,6 @@
 @CHARSET "UTF-8";
 
-@font-face 
+/*@font-face 
 { 
 	font-family : 'Comfortaa';
 	src: url('../font/Comfortaa-Regular.ttf') format('truetype'); 
@@ -19,7 +19,7 @@
 	font-family : 'Comfortaa';
 	src: url('f../ont/Comfortaa-Bold.ttf') format('truetype'); 
 	font-weight: bold;
-}
+}*/
 
 
 /*************** balises *********/
@@ -34,122 +34,79 @@ h1, h2
 }
 
 /**********************header**********************/
-a
+/*a
 {
 	color: #04b134;
 	text-decoration:none;
 	font-family: Comfortaa, Verdana, serif;
+}*/
+
+.navbar .brand
+{
+	padding-top:10px;	
+	font-size: 30px;
+	color: #43a628;
 }
 
-#header
+.navbar .nav > li > a
 {
-	background-color: #272727;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	height: 55px;
-	margin-top : -10px;
-	margin-left : -10px;
-	margin-right : -10px;
+	font-size: 16px;
+	color: #43a628;
 }
 
-#header a
+.navbar-search form
 {
-	color: #8e9999;
-	text-decoration:none;
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	margin: 0;
 }
 
-#header-holder
+.navbar .nav
 {
-	width: 946px;
-	margin: 0 auto;
+	margin-top : 10px;
 }
 
-#banner
+.navbar .nav .current-menu-item a, .navbar .nav .current-page-ancestor a
 {
-	margin-top: 20px;
-	display: inline;
+	font-weight: bold;
+	background-color: #c6e844;
+	border-radius: 15px;
 }
 
-#logo
+#sub-menu .menu-item a
 {
-	float: left;
-	font-size: 18px;
-	margin-top: 1px;
+	
+	margin-left: 20px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-style: italic;
+	font-size: 14px;
 }
 
-#nav
+#sub-menu ul
 {
-	color: #8e9999;
-	float: left;
-	width: 780px;
-	height: 30px;
-	margin-left: 10px;
-	font-size: 12px;
-}
-
-#titre
-{
-	background: #c6e844;
-	font-family: Comfortaa, Verdana, serif;
-	height: 40px;
-	line-height: 40px;
-	//font-size: 30px; //NL : title font transfert in h1
-	padding: 0 0 0 10px;
-	width: 946px;
-	margin: 0 auto;
-	margin-bottom : 10px;
-}
-
-/* NL : New tag */
-#titre h1
-{
-	font-family: Comfortaa, Verdana, serif;
-	font-size: 1.2em;
-	margin-left : 10px;
-}
-
-
-/******************* footer *********************/
-#footer
-{
-	font-family: Comfortaa, Verdana, serif;
-	clear: both;
-	margin-top : 20px;
-}
-
-#footer-holder
-{
-	width: 1000px;
-	height: 70px;
-	margin: 0 auto;
-	background-image:url(../images/footer-background.png);
-	background-repeat:no-repeat;
-
-}
-
-#footer-img
-{
-	float: left;
-	padding-left: 50px;
-}
-
-#footer-text
-{
-	font-size: 14px;	
-	float: left;
-	width: 800px;
-	height: 20px;
-	padding-top: 30px;
+	margin:0;
 }
 
 /*************** body ****************/
+body {
+	margin: 0;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 13px;
+	line-height: 18px;
+	color: #333333;
+	background-color: #ffffff;
+}
+
 #body
 { 
 	background: white;
-	font-family: Comfortaa, Verdana, serif;
+/* 	font-family: Comfortaa, Verdana, serif; */
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 13px;
+	line-height: 18px;
+	color: #333333;
 	clear: both;
 	width: 946px;
-	margin: 0 auto;
+	margin: 0;
 }
 
 #stat
@@ -167,7 +124,32 @@ a
 	color: red;
 }
 
-/*Page de statistiques*/
+/* Page content */
+div.content
+{
+	margin-top: 120px;
+}
+
+#titre
+{
+	background: #c6e844;
+	font-family: Comfortaa, Verdana, serif;
+	height: 40px;
+	line-height: 40px;
+	padding: 0 0 0 10px;
+	width: 946px;
+	margin: 0 auto;
+	margin-bottom : 10px;
+}
+
+#titre h1
+{
+	font-family: Comfortaa, Verdana, serif;
+	font-size: 1.2em;
+	margin-left : 10px;
+}
+
+/* Page de statistiques */
 #cartes h2
 {
 	text-align:center;
@@ -201,4 +183,13 @@ a
 #camemberts h2
 {
 	text-align:center;
+}
+
+/*************** footer ****************/
+
+#footer div
+{
+	clear: both;
+	margin-top : 5px;
+	padding-top: 20px;
 }

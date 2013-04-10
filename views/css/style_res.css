@@ -1,8 +1,10 @@
+/* STYLESHEET FOR METADATA RESULTS */
+
 @CHARSET "UTF-8";
  //ADDED BY PERE FOR DATATABLES 
 /*************** content ****************/
 
-.content
+.content_res
 {
 	font-family: Arial, Verdana, serif;
 	clear: both;
@@ -10,20 +12,20 @@
 	font-size: 13px;
 }
 
-.content h2, h1
+.content_res h2, h1
 {
 	font-size: 1.2em;
 	font-family: Comfortaa, Verdana, serif;
 }
 
-.content p
+.content_res p
 {
 	background: #F8F7F9;
 }
 
-.content a
+.content_res a
 {
-	color: #32703A;
+/*	color: #32703A;*/
 	font-size: 16px;
 	text-weight: bold;
 }
@@ -273,10 +275,6 @@
  tr.even {
  	background-color: white;
  }
- 
- 
- 
- 
  
  /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
   * Misc
@@ -590,8 +588,6 @@
  .accordion {
  	width: 100%;
  	padding-top: 10px;
- //	border-bottom: solid 1px #c4c4c4;
- 	
  }
  .accordion li
  {
@@ -602,16 +598,15 @@
          filter: alpha(opacity=90);
          opacity: 0.9;
  }
- .accordion h3 {
- 
- 	margin-bottom: 10px;
-     text-align: center;
- 	background: #e9e7e7 url(img/arrow-square.gif) no-repeat right -51px;
- 	padding: 7px 15px;
- 	font: bold 120%/100% Arial, Helvetica, sans-serif;
- 	border: solid 1px #c4c4c4;
- 	border-bottom: none;
- 	cursor: pointer;
+.accordion h3 {
+	margin-bottom: 10px;
+	text-align: center;
+	background: #e9e7e7 url(img/arrow-square.gif) no-repeat right -51px;
+	padding: 7px 15px;
+	font: bold 120%/100% Arial, Helvetica, sans-serif;
+	border: solid 1px #c4c4c4;
+	border-bottom: none;
+	cursor: pointer;
  }
  span.inst_titular
  {
@@ -627,7 +622,6 @@
  }
  span.inst_info
  {
- 	//display: block;
  	padding-bottom: 5px;
  	
  }
@@ -662,7 +656,7 @@
  	width: 108px;
  		height: 32px;
  }
- 
+
 span.tips
 {
 	font-size: 12px;

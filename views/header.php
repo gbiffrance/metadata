@@ -7,10 +7,10 @@
 	<head>
 		<title><?php echo $title; ?></title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="stylesheet" href="/wp-content/themes/gbif/stylesheets/bootstrap/css/bootstrap.css" type="text/css" media="screen" />
 		<link rel="stylesheet" href="<?php echo base_url();?>application/views/css/style.css" type="text/css" media="screen" />
 
-<!-- DEBUT MODIFS NICOLAS -->
-<link rel="stylesheet" href="<?php echo base_url();?>application/views/css/style_pere.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="<?php echo base_url();?>application/views/css/style_res.css" type="text/css" media="screen" />
 <?php
 echo "<script type='text/javascript' src=\"".base_url()."application/views/javascript/jquery.js?ver=1.4.4\"></script>\n";
 if(isset($ajax_f))
@@ -25,7 +25,7 @@ if(isset($ajax_f))
 	else if($ajax_f == "inst_details")
 	{
 		echo "<script type='text/javascript' src=\"".base_url()."application/views/javascript/pager/jquery.pager.js?ver=3.1\"></script>\n";
- 		echo "<script type='text/javascript' src=\"".base_url()."application/views/javascript/pager/my_pager.js?ver=3.1\"></script>\n";
+		echo "<script type='text/javascript' src=\"".base_url()."application/views/javascript/pager/my_pager.js?ver=3.1\"></script>\n";
 		
 		echo "<link rel=\"stylesheet\" href=\"".base_url()."application/views/css/Pager.css\" type=\"text/css\" media=\"screen\" />"; // CSS
 	}
@@ -35,66 +35,72 @@ if(isset($ajax_f))
 	}
 } // if isset 
 ?>
-<!-- FIN MODIFS NICOLAS -->
 
-	</head>
-	<body>
-		<div id="header">
-			<div id="header-holder">
-				<div id="banner">
-					<div id="logo">
-						<h1>
-							<a href="http://www.gbif.fr" accesskey="1" title="GBIF France">GBIF France</a>
-						</h1>
-					</div>
-				<!--menus-->
-				<div id="nav">
-					<p>
-						<a href="<?php echo site_url('metadata'); ?>">M&eacute;tadonn&eacute;es</a>&nbsp; <b>|</b> &nbsp;
-						<a href="<?php echo site_url('consultation'); ?>">Consultation</a>&nbsp; <b>|</b> &nbsp;
-						<a href="<?php echo site_url('statistiques'); ?>">Statistiques</a>&nbsp; <b>|</b> &nbsp;
-						<?php
-							// Si l'utilisateur est connecté
-							if ($log == "oui")
-							{
+</head>
+<body>
+
+	<div class="container" id="container">
+		<div class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+				<a class="brand" href="http://www.gbif.fr" accesskey="1" title="GBIF France">
+				GBIF France
+				</a>
+					<div id="navbar-menu">
+						<ul id="menu-header" class="nav">
+							<li id="menu-item-mhome" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-mhome"><a href="<?php echo site_url('metadata'); ?>">M&eacute;tadonn&eacute;es</a></li>
+							<li id="menu-item-view" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-view"><a href="<?php echo site_url('consultation'); ?>">Consultation</a></li>
+							<li id="menu-item-stat" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-stat"><a href="<?php echo site_url('statistiques'); ?>">Statistiques</a></li>
+							
+							<?php
+								// Si l'utilisateur est connecté
+								if ($log == "oui")
+								{
 								?>
-									<a href="<?php echo site_url('ajout'); ?>">Saisie</a> &nbsp;<b>|</b> &nbsp;
-								<?php 
+									<li id="menu-item-new" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-new"><a href="<?php echo site_url('ajout'); ?>">Saisie</a></li>
+									<?php 
 									// S'il a au moins un niveau de contributeur
 									if ($this->session->userdata('droits') >= 2)
 									{
-										?>
-											 <a href="<?php echo site_url('modification'); ?>">Modification</a> &nbsp;<b>|</b> &nbsp;
+									?>
+										<li id="menu-item-modif" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-modif"><a href="<?php echo site_url('modification'); ?>">Modification</a></li>
 										<?php
 									}
 									// S'il a au moins un niveau d'admin
 									if ($this->session->userdata('droits') >= 4)
 									{
-										?>
-											 <a href="<?php echo site_url('gestion'); ?>">Gestion des utilisateurs</a> &nbsp;<b>|</b> &nbsp;
-										<?php
+									?>
+										<li id="menu-item-manage" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-manage"><a href="<?php echo site_url('gestion'); ?>">Gestion des utilisateurs</a></li>
+									<?php
 									}
-								?>
-									<a href="<?php echo site_url('compte'); ?>">Modifier son compte</a> &nbsp;<b>|</b> &nbsp;
-									<a href="<?php echo site_url('deconnexion'); ?>">Se d&eacute;connecter</a>
-								<?php
-							}
-							else
-							{
-								?>
-									<a href="<?php echo site_url('connexion'); ?>">Se connecter</a>&nbsp;
-								<?php
-							}
-						?> 
-					</p>
+									?>
+									<li id="menu-item-user" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-user"><a href="<?php echo site_url('compte'); ?>">Modifier son compte</a></li>
+									<li id="menu-item-logout" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-logout"><a href="<?php echo site_url('deconnexion'); ?>">Se d&eacute;connecter</a></li>
+									<?php
+									}
+									else
+									{
+									?>
+										<li id="menu-item-loggin" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-loggin"><a href="<?php echo site_url('connexion'); ?>">Se connecter</a></li>
+				<!--						<li id="menu-item-newlog" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-newlog"><a href="<?php echo site_url('enregistrement'); ?>">S'enregistrer</a></li>
+				-->
+									<?php
+									}
+									?> 
+						</ul>
+						<div style="float:right;">
+							<img height="70" width="70" style="margin:10px;" src="http://www.gbif.fr/wp-content/themes/gbif/img/paint-simple-gbif-logo-120px.png"/>
+						</div>
+					</div>
+					<div id="sub-menu" style="float:left;">
+					</div>
 				</div>
-			</div>	
+			</div>
 		</div>
 	</div>
-
-	<div id=titre >
-<!-- NL MODIFS -->
-		<h1><?php echo $title; ?></h1>
-<!-- NL MODIFS -->
-	</div>	
+	
+	<div class="container content">
+		<div id=titre >
+			<h1><?php echo $title; ?></h1>
+		</div>	
 

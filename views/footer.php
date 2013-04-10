@@ -1,14 +1,18 @@
+		</div> <!-- End of body content -->
+<!-- 		<br /><br /> -->
 		<div id="footer">
-			<div id="footer-holder">
-				<div id="footer-content">
-					<div id="footer-img">
-						<img alt="gbif.fr" src="<?php echo base_url();?>application/views/images/footer-dark-simple-gbif-logo.png" />
-					</div>	
-					<div id="footer-text">
-						GBIF FRANCE - 43, Rue Buffon 75005 Paris
-					</div>
+			<footer class="footer">
+				<div class="container">
+					<p class="pull-right">
+						<a href="#">Haut de la page</a>
+					</p>  
+					<p>
+						<a href="http://www.gbif.fr">À propos du GBIF France </a>
+						| 
+						<a href="mailto:gbif@gbif.fr">Contact</a>
+					</p>
 				</div>
-			</div>
+			</footer>
 		</div>
 	</body>
 </html>
