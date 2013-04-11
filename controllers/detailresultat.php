@@ -32,7 +32,7 @@ class Detailresultat extends CI_Controller {
 		$this->load->library('session');
 		
 		// Header
-		$dataH['title'] = "D&eacute;tail de l'institution";
+		$dataH['title'] = "D&eacute;tails de l'institution";
 		$dataH['ajax_f'] = "inst_details";
 		if ($this->session->userdata('username') == FALSE)
 		{
@@ -91,7 +91,7 @@ class Detailresultat extends CI_Controller {
 		$this->load->library('session');
 		
 		// Header
-		$dataH['title'] = "D&eacute;tail du jeu de donn&eacute;e";
+		$dataH['title'] = "D&eacute;tails du jeu de donn&eacute;es";
 		$dataH['ajax_f'] = "coll_details";
 		if ($this->session->userdata('username') == FALSE)
 		{
@@ -109,7 +109,7 @@ class Detailresultat extends CI_Controller {
 		// On récupère les informations relatives à ce dataset
 		if (!$this->Bdd_select->get_infoData($id)) // Si le dataset n'est pas trouvé
 		{
-			$data['error'] = "Le jeu de donn&eacute;e n'existe pas";	
+			$data['error'] = "Le jeu de donn&eacute;es n'existe pas";	
 		}
 		else
 		{
@@ -196,7 +196,7 @@ class Detailresultat extends CI_Controller {
 		$this->load->library('session');
 		
 		// Header
-		$dataH['title'] = "D&eacute;tail de la personne";
+		$dataH['title'] = "D&eacute;tails de la personne";
 		$dataH['ajax_f'] = "pers_details";
 		if ($this->session->userdata('username') == FALSE)
 		{

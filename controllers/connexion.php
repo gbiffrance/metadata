@@ -65,7 +65,7 @@ class Connexion extends CI_Controller {
 		}
 		
 		// Header
-		$dataH['title'] = "Page de connexion";
+		$dataH['title'] = "Identification pour la mise &agrave; jour des m&eacute;tadonn&eacute;es";
 		if ($this->session->userdata('username') == FALSE)
 		{
 			$dataH['log'] = "non";

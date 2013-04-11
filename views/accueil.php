@@ -1,5 +1,5 @@
 <div id=body >
-	<div id=stat>
+	<div id="stat" class="alert">
 		<h4>Quelques chiffres :</h4>
 		<p>
 			Nombre d'institutions : <?php echo $inst; ?><br/>

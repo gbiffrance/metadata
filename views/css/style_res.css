@@ -20,12 +20,11 @@
 
 .content_res p
 {
-	background: #F8F7F9;
+/* 	background: #F8F7F9; */
 }
 
 .content_res a
 {
-/*	color: #32703A;*/
 	font-size: 16px;
 	text-weight: bold;
 }
@@ -580,7 +579,7 @@
  
  #advanced_search select
  {
- 	margin-left: 280px; //a cambiar!!
+ 	margin-left: 280px;
  	margin-right: auto;
  	font-size: 12px;
  	

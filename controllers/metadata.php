@@ -7,7 +7,7 @@ class Metadata extends CI_Controller {
 		$this->load->library('session');
 		
 		// Header
-		$dataH['title'] = "Page d'accueil";
+		$dataH['title'] = "A propos des m&eacute;tadonn&eacute;es du GBIF";
 		if ($this->session->userdata('username') == FALSE)
 		{
 			$dataH['log'] = "non";

@@ -7,6 +7,7 @@
 	<head>
 		<title><?php echo $title; ?></title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<!-- /!\ On production server, use relative address /wp-content/themes/gbif/stylesheets/bootstrap/css/bootstrap.css /!\ -->
 		<link rel="stylesheet" href="/wp-content/themes/gbif/stylesheets/bootstrap/css/bootstrap.css" type="text/css" media="screen" />
 		<link rel="stylesheet" href="<?php echo base_url();?>application/views/css/style.css" type="text/css" media="screen" />
 
@@ -82,8 +83,6 @@ if(isset($ajax_f))
 									{
 									?>
 										<li id="menu-item-loggin" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-loggin"><a href="<?php echo site_url('connexion'); ?>">Se connecter</a></li>
-				<!--						<li id="menu-item-newlog" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-newlog"><a href="<?php echo site_url('enregistrement'); ?>">S'enregistrer</a></li>
-				-->
 									<?php
 									}
 									?> 
@@ -100,7 +99,5 @@ if(isset($ajax_f))
 	</div>
 	
 	<div class="container content">
-		<div id=titre >
-			<h1><?php echo $title; ?></h1>
-		</div>	
+		<h1 class="page-title well"><?php echo $title; ?></h1>
 
