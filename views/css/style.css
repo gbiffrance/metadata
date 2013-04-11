@@ -154,19 +154,23 @@ div.content
 {
 	text-align:center;
 }
+
 #metropole
 {
 	width: 500px;
 }
+
 #metropole h3
 {
 	text-align:center;
 }
+
 #outremer
 {
 	float: right;
 }
-#outremer h3, h4
+
+#outremer h3
 {
 	margin-top: 0;
 	margin-bottom: 0;
@@ -174,12 +178,23 @@ div.content
 	padding-bottom: 0;
 	text-align:center;
 }
+
+#outremer h4
+{
+	margin-top: 0;
+	margin-bottom: 0;
+	padding-top: 0;
+	padding-bottom: 0;
+	text-align:center;
+}
+
 #camemberts
 {
 	margin-left: auto;
   margin-right: auto;
   width: 700px;
 }
+
 #camemberts h2
 {
 	text-align:center;

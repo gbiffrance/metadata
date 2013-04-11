@@ -1,5 +1,4 @@
 		</div> <!-- End of body content -->
-<!-- 		<br /><br /> -->
 		<div id="footer">
 			<footer class="footer">
 				<div class="container">
