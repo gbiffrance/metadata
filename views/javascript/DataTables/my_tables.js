@@ -129,10 +129,13 @@ defs=
 									{
 										if (info=='regions')
 											
+											new_html="<a href='detailresultat/dataset/"+data+"'>"+jQuery(new_target).html()+"</a>";
+										else if(info=='collections')
+											// Dataset details links in dataset list page
 											new_html="<a href='detailresultat/dataset/"+data+"'>"+jQuery(new_target).html()+"</a>";	
-										else 
+										else
+											// Institution details links in institutions list page
 											new_html="<a href='detailresultat/inst/"+data+"'>"+jQuery(new_target).html()+"</a>";	
-										
 										if (info=='personnes')
 										{
 											new_html="<a href='detailresultat/pers/"+data+"'>"+jQuery(td_target).eq(3).html()+"</a>";
@@ -155,7 +158,8 @@ defs=
 										}
 										else
 										{
-											new_html="<a href='detailresultat/dataset/"+data+"'>"+jQuery(new_target).html()+"</a>";
+											  // Institution details links in dataset list page
+											  new_html="<a href='detailresultat/inst/"+data+"'>"+jQuery(new_target).html()+"</a>";
 										}
 									}
 								break;
