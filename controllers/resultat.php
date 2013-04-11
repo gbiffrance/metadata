@@ -13,20 +13,6 @@ class Resultat extends CI_Controller {
 		{
 			$dataH['choix'] = 'institutions';
 		}
-	// DEBUT NL MODIFS
-// 		else if($_POST['choix'] == "instPere")
-// 		{
-// 			$dataH['choix'] = 'institutions';
-// 		}
-// 		else if($_POST['choix'] == "datasetPere")
-// 		{
-// 			$dataH['choix'] = 'collections';
-// 		}
-// 		else if($_POST['choix'] == "personPere")
-// 		{
-// 			$dataH['choix'] = 'personnes';
-// 		}
-	// FIN NL MODIFS
 		else if($_POST['choix'] == "dataset")
 		{
 			$dataH['choix'] = 'collections';
@@ -38,7 +24,6 @@ class Resultat extends CI_Controller {
 		else if($_POST['choix'] == "advance")
 		{
 			$dataH['choix'] = 'avancee';
-// 			$dataH['choix'] = 'advance';
 		}
 
 		if (isset($_POST['motcle']))
@@ -63,7 +48,6 @@ class Resultat extends CI_Controller {
 		else
 			$dataH['sWord'] = $_POST['motcle'];
 		
-		//$dataH['choix'] = $_POST['choix'];
 		$this->load->view('header', $dataH);
 		
 		// Body
@@ -72,7 +56,6 @@ class Resultat extends CI_Controller {
 		// On regarde le type de requête qu'il y a eu
 		// Si c'est une institution qui est recherchée
 		
-		// DEBUT MODIFS NICOLAS
 		// Si c'est une institution qui est recherchée
 		if ($_POST['choix'] == "institution")
 		{
@@ -91,29 +74,6 @@ class Resultat extends CI_Controller {
 			// On cherche la personne qui correspond au mot clé
 			$res['person'] = $this->Bdd_select->search_pers($_POST['motcle']);
 		}
-// FIN MODIFS NICOLAS
-
-			// DELPHINE PART
-// 		if ($_POST['choix'] == "institution")
-// 		{
-// 			// On cherche l'institution qui correspond au mot clé
-// 			//$data['inst'] = $this->Bdd_select->search_inst($_POST['motcle']); // NL : ORI
-// 			$res['inst'] = $this->Bdd_select->search_inst($_POST['motcle']); // NL : MODIFS
-// 		}
-// 		// Si c'est un dataset qui est recherché
-// 		else if ($_POST['choix'] == "dataset")
-// 		{
-// 			// On cherche le dataset qui correspond au mot clé
-// // 			$data['dataset'] = $this->Bdd_select->search_data($_POST['motcle']); // NL : ORI
-// 			$res['dataset'] = $this->Bdd_select->search_data($_POST['motcle']); // NL : MODIFS
-// 		}
-// 		// Si c'est une personne qui est recherchée
-// 		else if ($_POST['choix'] == "person")
-// 		{
-// 			// On cherche la personne qui correspond au mot clé
-// // 			$data['pers'] = $this->Bdd_select->search_pers($_POST['motcle']); // NL : ORI
-// 			$res['pers'] = $this->Bdd_select->search_pers($_POST['motcle']); // NL : MODIFS
-// 		}
 		// Si c'est une recherche avancée
 		else if ($_POST['choix'] == "advance")
 		{
@@ -220,13 +180,11 @@ class Resultat extends CI_Controller {
 				}
 			}	*/
 			// On cherche le dataset qui correspond aux choix
-// 			$data['dataset'] = $this->Bdd_select->search_avance($motcle); // NL : ORI
-// 			$res['dataset'] = $this->Bdd_select->search_avance($motcle);// NL : MODIFS
-			$res['advanceDataset'] = $this->Bdd_select->search_avance($motcle);// NL : MODIFS
+			$res['advanceDataset'] = $this->Bdd_select->search_avance($motcle);
 		}
 		
 		// On affiche le résultat
-		$this->load->view('resultat', $res); // NL : MODIFS
+		$this->load->view('resultat', $res);
 		
 		// Footer
 		$this->load->view('footer');

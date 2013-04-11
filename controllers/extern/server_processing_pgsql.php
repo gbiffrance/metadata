@@ -82,14 +82,17 @@ switch ($_GET['info']) {
 		$iFilteredTotal = $iTotal;
 		
 		$aaDataPere = array();
+// 		$instDetails = array(); // info about all institutions owning datasets
 		for($i=0;$i<sizeof($aaData);$i++)
 		{
 			$inst = $ci->Bdd_select->get_infoInst($aaData[$i]['IdInst']);
 			$town = $ci->Bdd_select->get_townInst($inst->IdTown);
-			$aaDataPere[$i] = array($aaData[$i]['IdInst'],$aaData[$i]['IdData'],
-									$aaData[$i]['NameInst'],$aaData[$i]['NameData'],
+			$aaDataPere[$i] = array($aaData[$i]['IdData'],$aaData[$i]['IdInst'],
+									$aaData[$i]['NameData'],$aaData[$i]['NameInst'],
 									$aaData[$i]['NameTypeData'],$aaData[$i]['NameNature']);
+		// $town);
 		}
+// $dataset[$i]['NameTypeData'] ? $dataset[$i]['NameNature'] ?
 		
 		if ( isset( $_GET['iDisplayStart'] ) && $_GET['iDisplayLength'] != '-1' )
 		{
@@ -185,7 +188,6 @@ switch ($_GET['info']) {
 // 		/////////////////////////////// END PERE DELETE ///////////////////////////////////
 // 		break;
 } // switch info
-
 
 // ************* Paging : nb results to show *************
 $sLimit = "";
