@@ -6,6 +6,7 @@
 		// On liste les agents
 		if(isset($agents))
 		{
+			echo "<br />\n";
 			echo "<table>";
 			echo "<tr><td></td><td>Nom de l'agent</td><td>Email</td><td>Nom de l'organisation</td><td>Droits</td></tr>";
 			foreach($agents as $item)
@@ -22,6 +23,10 @@
 		elseif(isset($agent))
 		{
 			echo validation_errors();
+			echo "
+			<p>\n
+				<a href='".site_url()."/gestion'>Retour</a>\n
+			</p>\n";
 			?>
 			<table>
 				<form method="post" action="<?php echo site_url('modifagent'); ?>">
@@ -118,7 +123,7 @@
 					</td>
 				</tr>
 				<tr><td><input type="hidden" name="IdAgent" value="<?php echo $agent->IdAgent; ?>"/></td></tr>
-				<tr><td><input type="submit" value="Valider les modifications"/></td></tr>
+				<tr><td><input type="submit" value="Valider"/></td></tr>
 			</form>
 		</table>
 		<?php

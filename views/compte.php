@@ -12,6 +12,6 @@
 		<tr><td>Retapez votre nouveau mot de passe </td><td><input type="password" name="passAgent2" /></td></tr>
 		<tr><td>Institution</td><td><input type="text" name="nameOrga" value="<?php echo set_value('nameOrga', $agent->NameOrga); ?>" title="nom de l'institution &agrave; laquelle vous appartenez" /></td></tr>
 		<tr><td><input type="hidden" name="IdAgent" value="<?php echo $agent->IdAgent; ?>"/></td></tr>
-		<tr><td><input type="submit" value="Valider les modifications"/></td></tr>
+		<tr><td><input type="submit" value="Valider"/></td></tr>
 	</form>
 </table>

@@ -6,11 +6,15 @@
 		if (isset($typeinst))
 		{
 			echo validation_errors();
+			echo "
+				<p>\n
+					<a href='".site_url()."/ajout'>Retour</a>\n
+				</p>\n";
 		?>
 		<table>
 			<form method="post" action="<?php echo site_url('ajoutinst'); ?>">
 				<tr><th colspan=2>Informations concernant l'institution</th></tr>
-				<tr><td>Nom *</td><td><input type="text" name="nomInst" value="<?php echo set_value('nomInst'); ?>"/></td></tr>
+				<tr><td>Nom *</td><td><input type="text" name="nomInst" alt="Nom de l'institution (ex. : Herbier de Noum&eacute;a)" value="<?php echo set_value('nomInst'); ?>"/></td></tr>
 				<tr><td>Description *</td><td><textarea name="descInst"><?php echo set_value('descInst'); ?></textarea></td></tr>
 				<tr><td>Sigle </td><td><input type="text" name="sigleInst" value="<?php echo set_value('sigleInst'); ?>"/></td></tr>
 				<tr><td>Adresse (num&eacute;ro + rue) *</td><td><input type="text" name="adresseInst" value="<?php echo set_value('adresseInst'); ?>"/></td></tr>
@@ -50,7 +54,7 @@
 				</tr>
 				<tr><td>T&eacute;l&eacute;phone </td><td><input type="tel" name="telInst" value="<?php echo set_value('telInst'); ?>"/></td></tr>
 				<tr><td>Mail </td><td><input type="email" name="mailInst" value="<?php echo set_value('mailInst'); ?>"/></td></tr>
-				<tr><td>Adresse URL du logo de l'institution </td><td><input type="url" name="logoInst" value="<?php echo set_value('logoInst'); ?>"/></td></tr>
+				<tr><td>URL du logo de l'institution </td><td><input type="url" name="logoInst" value="<?php echo set_value('logoInst'); ?>"/></td></tr>
 				<tr><td>Site web de l'institution </td><td><input type="url" name="urlInst" value="<?php echo set_value('urlInst'); ?>"/></td></tr>
 				<tr>
 					<td>Institution m&egrave;re </td>
@@ -94,6 +98,10 @@
 		else if (isset($typedata))
 		{
 			echo validation_errors();
+			echo "
+				<p>\n
+					<a href='".site_url()."/ajout'>Retour</a>\n
+				</p>\n";
 		?>
 		<table>
 			<form method="post" action="<?php echo site_url('ajoutdata'); ?>">
@@ -351,25 +359,26 @@
 				</tr>				
 				<tr><td>Base de donn&eacute;es<br/>(url) </td><td><input type="url" name="urlbdd" value="<?php echo set_value('urlbdd'); ?>" /></td></tr>
 				<tr><td>Niveau d'informatisation<br/>(faible, total, 30%, etc) </td><td><input type="text" name="nivinfo"  value="<?php echo set_value('nivinfo'); ?>"/></td></tr>
+				
 				<tr><th colspan=2>Personnes</th></tr>
-				<!-- On mets 1 personne obligatoire, et une 2ème facultative -->
-				<tr><td>Pr&eacute;fixe </td><td><input type="text" name="prefixPers"  value="<?php echo set_value('prefixPers'); ?>"/></td></tr>
-				<tr><td>Nom * </td><td><input type="text" name="nomPers"  value="<?php echo set_value('nomPers'); ?>"/></td></tr>
-				<tr><td>Pr&eacute;nom * </td><td><input type="text" name="prenomPers"  value="<?php echo set_value('prenomPers'); ?>"/></td></tr>
-				<tr><td>Ann&eacute;e de naissance </td><td><input type="number" name="naissancePers"  value="<?php echo set_value('naissancePers'); ?>"/></td></tr>
-				<tr><td>Ann&eacute;e de d&eacute;c&eacute;s </td><td><input type="number" name="decesPers" value="<?php echo set_value('decesPers'); ?>" /></td></tr>
-				<tr><td>Email * </td><td><input type="email" name="mailPers" value="<?php echo set_value('mailPers'); ?>" /></td></tr>
-				<tr><td>Num&eacute;ro de t&eacute;l&eacute;phone </td><td><input type="tel" name="telPers" value="<?php echo set_value('telPers'); ?>" /></td></tr>
-				<tr><td>Adresse </td><td><input type="text" name="adressePers" value="<?php echo set_value('adressePers'); ?>" /></td></tr>
+				<!-- 1 personne obligatoire, et une 2ème facultative -->
+				<tr><td>Pr&eacute;fixe </td><td><input type="text" name="prefixPers1"  value="<?php echo set_value('prefixPers1'); ?>"/></td></tr>
+				<tr><td>Nom * </td><td><input type="text" name="nomPers1"  value="<?php echo set_value('nomPers1'); ?>"/></td></tr>
+				<tr><td>Pr&eacute;nom * </td><td><input type="text" name="prenomPers1"  value="<?php echo set_value('prenomPers1'); ?>"/></td></tr>
+				<tr><td>Ann&eacute;e de naissance </td><td><input type="number" name="naissancePers1"  value="<?php echo set_value('naissancePers1'); ?>"/></td></tr>
+				<tr><td>Ann&eacute;e de d&eacute;c&eacute;s </td><td><input type="number" name="decesPers1" value="<?php echo set_value('decesPers1'); ?>" /></td></tr>
+				<tr><td>Email * </td><td><input type="email" name="mailPers1" value="<?php echo set_value('mailPers1'); ?>" /></td></tr>
+				<tr><td>Num&eacute;ro de t&eacute;l&eacute;phone </td><td><input type="tel" name="telPers1" value="<?php echo set_value('telPers1'); ?>" /></td></tr>
+				<tr><td>Adresse </td><td><input type="text" name="adressePers1" value="<?php echo set_value('adressePers1'); ?>" /></td></tr>
 				<tr>
 					<td>R&ocirc;le </td>
 					<td>
-						<select name="IdRole">
+						<select name="IdRole1">
 						<?php
 							// On parcourt la liste des roles
 							foreach ($role as $item)
 							{
-								echo "<option value='".$item['IdRole']."' ".set_select('IdRole', $item['IdRole']).">".trim($item['NameRole'])."</option>";
+								echo "<option value='".$item['IdRole']."' ".set_select('IdRole1', $item['IdRole']).">".trim($item['NameRole'])."</option>";
 							}
 							// On libère la variable
 							unset ($item);
