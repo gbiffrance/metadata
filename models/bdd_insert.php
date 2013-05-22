@@ -511,9 +511,10 @@ class Bdd_insert extends CI_Model
 										\"NameOrga\" = $nameOrga";
 			if(isset($pass))
 			{
-				$requete .= ", \"PassAgent\" = $pass";
+				$mdp = $this->Bdd_select->hash_mdp($pass);
+				$requete .= ", \"PassAgent\" = '$mdp'";
 			}
-			$requete .= "WHERE \"IdAgent\" = $idagent";
+			$requete .= " WHERE \"IdAgent\" = $idagent";
 			// On contacte la bdd
 			$query = $this->db->query($requete);
 		}

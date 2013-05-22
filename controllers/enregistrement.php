@@ -53,7 +53,7 @@ class Enregistrement extends CI_Controller {
 					$newdata = array(
                    'username'  => $_POST['nom'],
                    'id'				 => $idagent,
-                   'email'     => $_POST['password'],
+                   'email'     => $_POST['email'],
                    'droits'		 => 1
              		);
 					$this->session->set_userdata($newdata);

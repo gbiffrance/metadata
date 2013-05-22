@@ -38,7 +38,7 @@ class Compte extends CI_Controller {
 		$this->load->library('session');
 		
 		// Header
-		$dataH['title'] = "Modifier son compte";
+		$dataH['title'] = "Modifications prises en compte";
 		$dataH['log'] = "oui";
 		$this->load->view('header', $dataH);
 		
@@ -70,9 +70,9 @@ class Compte extends CI_Controller {
 				$mail = $_POST['emailAgent'];
 				// On initialise la variable à null si on ne modifie pas le password
 				$password = NULL;
-				if(isset($_POST['password']))
+				if(isset($_POST['passAgent']))
 				{
-					$password = $_POST['password'];
+					$password = $_POST['passAgent'];
 				}
 				$orga = $_POST['nameOrga'];
 				// On met à jour l'agent
